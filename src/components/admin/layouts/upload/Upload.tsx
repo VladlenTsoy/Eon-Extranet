@@ -23,9 +23,12 @@ export const UploadInput = (props: any) => {
     return <Form.Item label="Картинка">
         <div className="uploadBlock">
             <label htmlFor="input-file">
-                {imageUrl || props.form.getFieldValue('picture') ? <img src={imageUrl || props.form.getFieldValue('picture')} alt="image"/> : <Icon type="plus" className="add-icon"/>}
-                // @ts-ignore
-                <input type="file" onChange={handleChange} id="input-file" hidden/>
+                {imageUrl || props.form.getFieldValue('picture') ?
+                    <img src={imageUrl || props.form.getFieldValue('picture')} alt="image"/> :
+                    <Icon type="plus" className="add-icon"/>}
+                <input type="file"
+                    // @ts-ignore
+                       onChange={handleChange} id="input-file" hidden/>
                 {getFieldDecorator('picture', {
                     rules: [{required: true, message: 'Выберите картинку!'}],
                 })(

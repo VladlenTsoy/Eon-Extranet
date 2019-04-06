@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Icon} from 'antd';
+import {Button, Card, Icon} from 'antd';
 import {Link} from "react-router-dom";
 import {TableComponent} from "../layouts/table/Table";
 
@@ -15,24 +15,24 @@ const columns = [{
 }, {
     title: 'Лого',
     dataIndex: 'image',
-    render: (text: string | undefined, record: { title: string | undefined; }) => text ?
+    render: (text: string | undefined, record: any) => text ?
         <img src={text} alt={record.title} width="40px"/> : 'Пусто',
     sorter: true,
 }, {
     title: 'Город',
     dataIndex: 'city_id',
-    render: (text: any, record: { city: any; }) => record.city,
+    render: (text: any, record: any) => record.city,
     sorter: true,
 }, {
     title: 'Фрашиза',
     key: 'franchise_id',
     dataIndex: 'franchise_id',
-    render: (text: any, record: { franchise: any; }) => record.franchise,
+    render: (text: any, record: any) => record.franchise,
     sorter: true,
 }, {
     title: 'Директор',
     dataIndex: 'director_id',
-    render: (text: any, record: { director: any; }) => record.director,
+    render: (text: any, record: any) => record.director,
     sorter: true,
 }, {
     title: 'Создан',
@@ -41,14 +41,16 @@ const columns = [{
     sorter: true,
 }, {
     title: <Icon type="bars"/>,
-    render: (text: any, record: { id: any; }) => <Link to={`centers/center/${record.id}`}>
+    render: (text: any, record: any) => <Link to={`centers/center/${record.id}`}>
         <Button type="primary" shape="circle" icon="edit" htmlType="button"/>
     </Link>,
 }];
 
 export const Centers = (props: any) => {
     return <div>
-        <Link to="centers/create"><Button type="primary" htmlType="button">Создать центр</Button></Link>
-        <TableComponent columns={columns} url="centers"/>
+        <Card className="_card">
+            <Link to="centers/create"><Button type="primary" htmlType="button">Создать центр</Button></Link>
+            <TableComponent columns={columns} url="centers"/>
+        </Card>
     </div>;
 };

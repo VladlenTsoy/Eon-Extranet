@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from "react";
 import {Table, Input, Form} from 'antd';
 import {useStore} from "../../../../store/useStore";
 
-export const TableComponent = ({columns, url}: any) => {
+export const TableComponent = ({columns, url, loader, setLoader}: any) => {
     const [state] = useStore();
     const [data, setData] = useState([]);
     const [pagination, setPagination] = useState({pageIndex: 1, pageSize: 10, total: 0,});
@@ -21,7 +21,12 @@ export const TableComponent = ({columns, url}: any) => {
         fetch({})
     }, []);
 
-    const handleTableChange = (_pagination: { pageIndex?: number; pageSize: any; total?: number; current?: any; }, filters: {}, sorter: { field?: any; order?: any; }, data: {}, search?: any) => {
+    if (loader) {
+        fetch({});
+        setLoader(false);
+    }
+
+    const handleTableChange = (_pagination: { pageIndex?: number; pageSize: any; total?: number; current?: any; }, filters: any, sorter: { field?: any; order?: any; }, data: {}, search?: any) => {
         pagination.pageIndex = _pagination.current;
         //
         setPagination(pagination);

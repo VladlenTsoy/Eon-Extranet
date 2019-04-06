@@ -1,22 +1,27 @@
-import React from "react";
+import React, {useState} from "react";
 import {TableComponent} from "../../layouts/table/Table";
 import {Link} from "react-router-dom";
-import {Button, Icon, Modal} from "antd";
+import {Button, Card, Icon, Modal, Typography} from "antd";
+import {useStore} from "../../../../store/useStore";
 
+const {Title} = Typography;
 const confirm = Modal.confirm;
 
-const DigitalPicture: React.FC = (props: any) => {
+export const DigitalPicture = () => {
+    const [state] = useStore();
+    const [loader, setLoader] = useState(false);
 
-    const showConfirm = (id: any) => {
+    const deleteDigitalPicture = async (id: number) => {
+        await state.api.user_access.delete(`digital-picture/${id}`);
+        setLoader(true);
+    };
+
+    const showConfirm = (id: any) =>
         confirm({
             title: 'Вы уверены, что хотите удалить?',
-            // content: 'Some descriptions',
             okType: 'danger',
-            onOk() {
-                props.deleteDigitalPicture(id);
-            },
+            onOk: () => deleteDigitalPicture(id),
         });
-    };
 
     const columns = [{
         title: 'ID',
@@ -30,7 +35,8 @@ const DigitalPicture: React.FC = (props: any) => {
     }, {
         title: 'Картинка',
         dataIndex: 'picture',
-        render: (text: any, record: { url_picture: string | undefined; number: string | undefined; }) => <img src={record.url_picture} alt={record.number} width="50px"/>,
+        render: (text: any, record: { url_picture: string | undefined; number: string | undefined; }) => <img
+            src={record.url_picture} alt={record.number} width="50px"/>,
         sorter: true,
     }, {
         title: <Icon type="bars"/>,
@@ -43,9 +49,14 @@ const DigitalPicture: React.FC = (props: any) => {
     }];
 
     return <div>
-        <Link to="/tasks/digital-picture/create"><Button htmlType="button" type="primary">Создать</Button></Link>
-        <TableComponent columns={columns} apiAccess={props.apiAccess} url="digital-picture"/>
+        <Card className="_card">
+            <div className="_card-title">
+                <Title level={3} className="title">Цифра-Образ</Title>
+                <Link className="link" to="/tasks/digital-picture/create">
+                    <Button icon="plus" htmlType="button" type="primary">Создать</Button>
+                </Link>
+            </div>
+            <TableComponent columns={columns} url="digital-picture" loader={loader} setLoader={setLoader}/>
+        </Card>
     </div>
 };
-
-export default DigitalPicture;

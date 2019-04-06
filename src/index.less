@@ -2,15 +2,15 @@ body {
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  monospace;
 }
 
 
@@ -27,6 +27,20 @@ div._card {
   border: 0;
   overflow: hidden;
   position: relative;
+
+  ._card-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    .title{
+      margin: 0 1rem 0 0;
+    }
+
+    .link{
+
+    }
+  }
 }
 
 div._card._card-non-padded .ant-card-body {
