@@ -1,21 +1,31 @@
 import './login.less';
-import React, {Component, useState} from 'react';
-import {Link} from 'react-router-dom';
-import {Card, Input, Icon, Button, Tooltip, Form} from 'antd';
+import React, {useState} from 'react';
+import {Card, Input, Icon, Button, Tooltip, Form, message} from 'antd';
+import {useStore} from "../../../store/useStore";
 
-export const Login: React.FC = (props: any) => {
+const Login = ({form, apiChangeAccessToken, fetchCurrentUserData}: any) => {
+    const [state] = useStore();
     const [showPwd, setShowPwd] = useState(false);
-    const {getFieldDecorator} = props.form;
-    const {loader} = props;
+    const [loader, setLoader] = useState(false);
+    const {getFieldDecorator} = form;
 
-    // // Авторизация
-    const handleSubmit = (e) => {
+    // Авторизация
+    const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
-        props.form.validateFields((err, values) => {
-            if (err) return;
+        setLoader(true);
 
-            props.authChangeLoader(true);
-            props.authWithEmailAndPassword(values);
+        //
+        form.validateFields((err: any, values: any) => {
+            if (err) return;
+            state.api.guest.post('/login/admin', values)
+                .then(async (response: any) => {
+                    apiChangeAccessToken(response.data.data.token);
+                    fetchCurrentUserData();
+                })
+                .catch((err: any) => {
+                    setLoader(false);
+                    message.error(err.response.data.message);
+                });
         });
     };
 
@@ -69,3 +79,5 @@ export const Login: React.FC = (props: any) => {
         </Card>
     );
 };
+
+export const LoginForm = Form.create({name: 'login'})(Login);

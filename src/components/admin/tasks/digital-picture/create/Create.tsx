@@ -8,7 +8,7 @@ export const CreateDigitalPicture = (props: any) => {
     //
     const id = props.match.params.id;
 
-    const selectById = async (id) => {
+    const selectById = async (id: any) => {
         let response = await props.selectDigitalPicture(id);
         props.form.setFieldsValue({
             number: response.payload.number,
@@ -22,9 +22,9 @@ export const CreateDigitalPicture = (props: any) => {
         }, []);
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
-        props.form.validateFieldsAndScroll(async (err, values) => {
+        props.form.validateFieldsAndScroll(async (err: any, values: any) => {
             if (err) return;
 
             setLoading(true);

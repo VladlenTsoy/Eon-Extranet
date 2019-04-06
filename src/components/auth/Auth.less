@@ -1,0 +1,91 @@
+/*------------------- Авторизация -------------------*/
+.layout-auth {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url("../../assets/images/pages/login_page_bg.svg") no-repeat center -165px;
+  background-size: 230%;
+  overflow-y: scroll;
+  padding-top: 2rem;
+
+  .content-auth {
+    height: 100%;
+  }
+
+  ._row {
+    height: 100%;
+    text-align: center;
+  }
+
+  ._card {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    text-align: justify;
+  }
+
+  // Footer
+  .footer {
+    height: 30px;
+    background: none;
+    padding: 0 1rem;
+
+    .footer-text {
+      display: none;
+      font-size: 14px;
+      text-align: left;
+      vertical-align: bottom;
+    }
+
+    .footer-wrap-icon {
+      height: 100%;
+      padding-bottom: 10px;
+      text-align: center;
+      display: block;
+      margin: 0 auto;
+
+      a:hover {
+        text-decoration: none;
+      }
+
+      a:not(:first-child) .footer-icon {
+        padding-left: 1rem;
+      }
+
+      .footer-icon {
+        height: 100%;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .layout-auth {
+    background: url("../../assets/images/pages/login_page_bg.svg") no-repeat center -250px;
+    background-size: 95%;
+
+    ._card {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .footer {
+      .footer-text {
+        display: inline-block;
+      }
+
+      .footer-wrap-icon {
+        text-align: inherit;
+        float: right;
+        display: inline-block;
+      }
+    }
+  }
+}
+
+@media (max-height: 400px) {
+  .layout-auth {
+    position: relative;
+  }
+}

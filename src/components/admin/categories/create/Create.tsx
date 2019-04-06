@@ -10,13 +10,13 @@ export const CreateCategory = (props: any) => {
     }, []);
 
     const centersOptions = props.centers.data
-        .map(c => <Select.Option value={c.id} key={c.id}>{c.title}</Select.Option>);
+        .map((c: { id: string | number | undefined; title: React.ReactNode; }) => <Select.Option value={c.id} key={c.id}>{c.title}</Select.Option>);
     const disciplinesOptions = props.disciplines.data
-        .map(d => <Select.Option value={d.id} key={d.id}>{d.title}</Select.Option>);
+        .map((d: { id: string | number | undefined; title: React.ReactNode; }) => <Select.Option value={d.id} key={d.id}>{d.title}</Select.Option>);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
-        props.form.validateFieldsAndScroll(async (err, values) => {
+        props.form.validateFieldsAndScroll(async (err: any, values: any) => {
             if (err) return;
 
             setLoading(true);

@@ -14,14 +14,14 @@ const columns = [{
     sorter: true,
 }, {
     title: <Icon type="bars"/>,
-    render: (text, record) => <Link to={`centers/center/${record.id}`}>
+    render: (text: string, record: { id: any; }) => <Link to={`centers/center/${record.id}`}>
         <Button type="primary" shape="circle" icon="edit" htmlType="button"/>
     </Link>,
 }];
 
-export const Cities: React.FC = (props: any) => {
+export const Cities = () => {
     return <div>
         <Link to="сities/create"><Button type="primary" htmlType="button">Добавить город</Button></Link>
-        <TableComponent columns={columns} apiAccess={props.apiAccess} url="cities"/>
+        <TableComponent columns={columns} url="cities"/>
     </div>;
 };

@@ -15,23 +15,25 @@ const columns = [{
 }, {
     title: 'Центер',
     dataIndex: 'center_id',
-    render: (text, record) => <Link to={`/centers/center/${text}`}>{record.center}</Link>,
+    render: (text: any, record: { center: React.ReactNode; }) => <Link
+        to={`/centers/center/${text}`}>{record.center}</Link>,
     sorter: true,
 }, {
     title: 'Дисциплина',
     dataIndex: 'discipline_id',
-    render: (text, record) => <Link to={`/disciplines/discipline/${text}`}>{record.discipline}</Link>,
+    render: (text: any, record: { discipline: React.ReactNode; }) => <Link
+        to={`/disciplines/discipline/${text}`}>{record.discipline}</Link>,
     sorter: true,
 }, {
     title: <Icon type="bars"/>,
-    render: (text, record) => <Link to={`centers/center/${record.id}`}>
+    render: (text: any, record: { id: any; }) => <Link to={`centers/center/${record.id}`}>
         <Button type="primary" shape="circle" icon="edit" htmlType="button"/>
     </Link>,
 }];
 
-export const Categories: React.FC = (props: any) => {
+export const Categories = () => {
     return <div>
         <Link to="/categories/create"><Button type="primary" htmlType="button">Добавить категорию</Button></Link>
-        <TableComponent columns={columns} apiAccess={props.apiAccess} url="categories"/>
+        <TableComponent columns={columns} url="categories"/>
     </div>;
 };
