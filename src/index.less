@@ -12,3 +12,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+@bsc-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+@color-white: #ffffff;
+
+/*------------------- Card -------------------*/
+div._card {
+  border-radius: 10px;
+  box-shadow: @bsc-box-shadow;
+  background: @color-white;
+  padding: 0;
+  margin-bottom: 1rem;
+  border: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+div._card._card-non-padded .ant-card-body {
+  padding: 0;
+}

@@ -23,32 +23,36 @@ export const Sidebar = ({stateSidebar, setStateSidebar}: any) => {
             </Item>
             <Item>
                 <Link to="/centers">
-                    <Icon type="home"/>
+                    <Icon type="bank"/>
                     <span>Центры</span>
                 </Link>
             </Item>
-            <Item>
-                <Link to="/cities">
-                    <Icon type="home"/>
-                    <span>Города</span>
-                </Link>
-            </Item>
-            <Item>
-                <Link to="/disciplines">
-                    <Icon type="home"/>
-                    <span>Дисциплины</span>
-                </Link>
-            </Item>
-            <Item>
-                <Link to="/categories">
-                    <Icon type="home"/>
-                    <span>Категории</span>
-                </Link>
-            </Item>
-            <SubMenu title={<span><Icon type="home"/><span>Упражнения</span></span>}>
+
+            <SubMenu title={<span><Icon type="setting"/><span>Настройки</span></span>}>
+                <Item>
+                    <Link to="/cities">
+                        <Icon type="pushpin"/>
+                        <span>Города</span>
+                    </Link>
+                </Item>
+                <Item>
+                    <Link to="/disciplines">
+                        <Icon type="database"/>
+                        <span>Дисциплины</span>
+                    </Link>
+                </Item>
+                <Item>
+                    <Link to="/categories">
+                        <Icon type="database"/>
+                        <span>Категории</span>
+                    </Link>
+                </Item>
+            </SubMenu>
+
+            <SubMenu title={<span><Icon type="robot"/><span>Упражнения</span></span>}>
                 <Item>
                     <Link to="/tasks/digital-picture">
-                        <Icon type="home"/>
+                        <Icon type="database" />
                         <span>Цифра-Картинка</span>
                     </Link>
                 </Item>
