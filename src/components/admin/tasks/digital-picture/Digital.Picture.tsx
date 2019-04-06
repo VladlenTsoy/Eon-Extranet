@@ -1,25 +1,13 @@
-import React, {useReducer} from "react";
+import React from "react";
 import {TableComponent} from "../../layouts/table/Table";
 import {Link} from "react-router-dom";
 import {Button, Icon, Modal} from "antd";
 
 const confirm = Modal.confirm;
 
-function reducer(state, action) {
-    switch (action.type) {
-        case 'reset':
-            return initialState;
-        case 'increment':
-            return {count: state.count + 1};
-        case 'decrement':
-            return {count: state.count - 1};
-    }
-}
-
 const DigitalPicture: React.FC = (props: any) => {
-    const [state, dispatch] = useReducer(reducer, {});
 
-    const showConfirm = (id) => {
+    const showConfirm = (id: any) => {
         confirm({
             title: 'Вы уверены, что хотите удалить?',
             // content: 'Some descriptions',
@@ -42,11 +30,11 @@ const DigitalPicture: React.FC = (props: any) => {
     }, {
         title: 'Картинка',
         dataIndex: 'picture',
-        render: (text, record) => <img src={record.url_picture} alt={record.number} width="50px"/>,
+        render: (text: any, record: { url_picture: string | undefined; number: string | undefined; }) => <img src={record.url_picture} alt={record.number} width="50px"/>,
         sorter: true,
     }, {
         title: <Icon type="bars"/>,
-        render: (text, record) => <div>
+        render: (text: any, record: { id: any; }) => <div>
             <Link to={`/tasks/digital-picture/${record.id}`}>
                 <Button type="primary" shape="circle" icon="edit" htmlType="button" style={{marginRight: 5}}/>
             </Link>

@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
+import './Admin.less';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import {Layout} from 'antd';
 import {Navbar} from './layouts/navbar/Navbar';
 import {Sidebar} from './layouts/sidebar/Sidebar';
+import {Home} from "./home/Home";
 import {Centers} from './centers/Centers';
-import {Cities} from  './cities/Cities';
-import {Disciplines} from  './disciplines/Disciplines';
-import {Categories} from  './categories/Categories';
+import {Cities} from './cities/Cities';
+import {Disciplines} from './disciplines/Disciplines';
+import {Categories} from './categories/Categories';
 import {CreateCategory} from "./categories/create/Create";
 import DigitalPicture from "./tasks/digital-picture/Digital.Picture";
 import {CreateDigitalPicture} from "./tasks/digital-picture/create/Create";
@@ -19,8 +21,9 @@ export const Admin = () => {
         <Layout>
             <Sidebar stateSidebar={stateSidebar} setStateSidebar={setStateSidebar}/>
             <Navbar stateSidebar={stateSidebar} setStateSidebar={setStateSidebar}/>
-            <Content style={{margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280,}}>
+            <Content className="admin-content">
                 <Switch>
+                    <Route exact path="/" component={Home}/>
                     <Route exact path="/centers" component={Centers}/>
                     <Route exact path="/cities" component={Cities}/>
                     <Route exact path="/disciplines" component={Disciplines}/>
