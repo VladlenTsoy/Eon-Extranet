@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import './Upload.less';
-import {Col, Icon, Input, Form} from "antd";
+import {Icon, Input, Form} from "antd";
 
 function getBase64(img: Blob, callback: { (imageUrl: any): void; (arg0: string | ArrayBuffer | null): void; }) {
     const reader = new FileReader();
@@ -8,28 +8,28 @@ function getBase64(img: Blob, callback: { (imageUrl: any): void; (arg0: string |
     reader.readAsDataURL(img);
 }
 
-export const UploadInput = (props: any) => {
+export const UploadInput = ({form, name, label}: any) => {
     const [imageUrl, setImageUrl] = useState();
-    const {getFieldDecorator} = props.form;
+    const {getFieldDecorator} = form;
 
     const handleChange = (e: { target: { files: Blob[]; }; }) => {
         // Get this url from response in real world.
         return getBase64(e.target.files[0], (imageUrl: any) => {
             setImageUrl(imageUrl);
-            props.form.setFieldsValue({picture: imageUrl})
+            form.setFieldsValue({[name]: imageUrl})
         });
     };
 
-    return <Form.Item label="Картинка">
+    return <Form.Item label={label}>
         <div className="uploadBlock">
-            <label htmlFor="input-file">
-                {imageUrl || props.form.getFieldValue('picture') ?
-                    <img src={imageUrl || props.form.getFieldValue('picture')} alt="image"/> :
+            <label>
+                {imageUrl || form.getFieldValue(name) ?
+                    <img src={imageUrl || form.getFieldValue(name)} alt="image"/> :
                     <Icon type="plus" className="add-icon"/>}
                 <input type="file"
                     // @ts-ignore
-                       onChange={handleChange} id="input-file" hidden/>
-                {getFieldDecorator('picture', {
+                       onChange={handleChange} hidden/>
+                {getFieldDecorator(name, {
                     rules: [{required: true, message: 'Выберите картинку!'}],
                 })(
                     <Input/>

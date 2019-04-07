@@ -1,10 +1,16 @@
 import React, {useEffect, useState} from "react";
-import {Form, Input, Button, Skeleton, Row, Col, Card} from "antd";
+import {Form, InputNumber, Button, Skeleton, Row, Col, Card, Typography} from "antd";
 import {UploadInput} from "../../../layouts/upload/Upload";
 import {withRouter} from "react-router";
 import {useStore} from "../../../../../store/useStore";
 
-const CreateDigitalPicture = ({form, history, match}: any) => {
+interface DigitalPicture {
+    data: { number: number, url_picture: string }
+}
+
+const {Title} = Typography;
+
+const EditorDigitalPicture = ({form, history, match}: any) => {
     const {getFieldDecorator} = form;
     const [state] = useStore();
     const [loading, setLoading] = useState(false);
@@ -12,7 +18,7 @@ const CreateDigitalPicture = ({form, history, match}: any) => {
     const id = match.params.id;
 
     const selectById = async (id: any) => {
-        let response = await state.api.user_access.get(`digital-picture/${id}`);
+        let response: DigitalPicture = await state.api.user_access.get(`digital-picture/${id}`);
         form.setFieldsValue({
             number: response.data.number,
             picture: response.data.url_picture
@@ -44,18 +50,20 @@ const CreateDigitalPicture = ({form, history, match}: any) => {
         <Row type="flex" justify="center">
             <Col span={6}>
                 <Card className="_card">
-                    <Skeleton loading={loading} active>
-                        <Form.Item label="Название">
+                    <Title level={3} className="title">Цифра-Образ</Title>
+                    <Skeleton loading={loading} active/>
+                    <div className={loading ? 'hideme' : ''}>
+                        <Form.Item label="Цифра">
                             {getFieldDecorator('number', {
-                                rules: [{required: true, message: 'Введите названия категории!'}],
+                                rules: [{required: true, message: 'Введите цифру!'}],
                             })(
-                                <Input style={{width: '100%'}} placeholder="Введите название"/>
+                                <InputNumber style={{width: '100%'}} min={0} max={100000}/>
                             )}
                         </Form.Item>
-                        <UploadInput form={form}/>
+                        <UploadInput form={form} name="picture" label="Картинка"/>
                         <Button type="primary" block htmlType="submit" icon="save"
                                 loading={loadingBtn}>Сохранить</Button>
-                    </Skeleton>
+                    </div>
                 </Card>
             </Col>
         </Row>
@@ -64,4 +72,4 @@ const CreateDigitalPicture = ({form, history, match}: any) => {
 
 
 // @ts-ignore
-export const CreateDigitalPictureForm = Form.create({name: 'create-category'})(withRouter(CreateDigitalPicture));
+export const EditorDigitalPictureForm = Form.create({name: 'create-category'})(withRouter(EditorDigitalPicture));

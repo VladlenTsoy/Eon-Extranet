@@ -57,8 +57,32 @@ export const Sidebar = ({stateSidebar, setStateSidebar}: any) => {
             <SubMenu title={<span><Icon type="robot"/><span>Упражнения</span></span>}>
                 <Item>
                     <Link to="/tasks/digital-picture">
-                        <Icon type="database" />
+                        <Icon type="database"/>
                         <span>Цифра-Картинка</span>
+                    </Link>
+                </Item>
+                <Item>
+                    <Link to="/tasks/countries">
+                        <Icon type="database"/>
+                        <span>Страны</span>
+                    </Link>
+                </Item>
+                <Item>
+                    <Link to="/tasks/personalities">
+                        <Icon type="database"/>
+                        <span>Личности</span>
+                    </Link>
+                </Item>
+                <Item>
+                    <Link to="/tasks/words">
+                        <Icon type="database"/>
+                        <span>Слова</span>
+                    </Link>
+                </Item>
+                <Item>
+                    <Link to="/tasks/word-numbers">
+                        <Icon type="database"/>
+                        <span>Главная система</span>
                     </Link>
                 </Item>
             </SubMenu>

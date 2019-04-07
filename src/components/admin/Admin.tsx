@@ -11,9 +11,17 @@ import {Disciplines} from './disciplines/Disciplines';
 import {Categories} from './categories/Categories';
 import {CreateCategory} from "./categories/create/Create";
 import {DigitalPicture} from "./tasks/digital-picture/Digital.Picture";
-import {CreateDigitalPictureForm} from "./tasks/digital-picture/create/Create";
+import {EditorDigitalPictureForm} from "./tasks/digital-picture/editor/Editor";
 import {Users} from "./users/Users";
 import {Pupil} from "./users/Pupil/Pupil";
+import {Countries} from "./tasks/countires/Countries";
+import {EditorCountryForm} from "./tasks/countires/editor/Editor";
+import {Personalities} from "./tasks/personalities/Personalities";
+import {EditorPersonalityForm} from "./tasks/personalities/editor/Editor";
+import {Words} from "./tasks/words/Words";
+import {EditorWordForm} from "./tasks/words/editor/Editor";
+import {WordNumbers} from "./tasks/word-numbers/WordNumbers";
+import {EditorWordNumberForm} from "./tasks/word-numbers/editor/Editor";
 
 const {Content} = Layout;
 
@@ -39,8 +47,24 @@ export const Admin = () => {
                     <Route path="/categories/create" component={CreateCategory}/>
                     {/*<Route path="/categories/category/:id" component={CreateCategoryContainer}/>*/}
                     <Route exact path="/tasks/digital-picture" component={DigitalPicture}/>
-                    <Route path="/tasks/digital-picture/create" component={CreateDigitalPictureForm}/>
-                    <Route path="/tasks/digital-picture/:id" component={CreateDigitalPictureForm}/>
+                    <Route path="/tasks/digital-picture/create" component={EditorDigitalPictureForm}/>
+                    <Route path="/tasks/digital-picture/:id" component={EditorDigitalPictureForm}/>
+                    //
+                    <Route exact path="/tasks/countries" component={Countries}/>
+                    <Route path="/tasks/country/create" component={EditorCountryForm}/>
+                    <Route path="/tasks/country/:id" component={EditorCountryForm}/>
+                    //
+                    <Route exact path="/tasks/personalities" component={Personalities}/>
+                    <Route path="/tasks/personality/create" component={EditorPersonalityForm}/>
+                    <Route path="/tasks/personality/:id" component={EditorPersonalityForm}/>
+                    //
+                    <Route exact path="/tasks/words" component={Words}/>
+                    <Route path="/tasks/word/create" component={EditorWordForm}/>
+                    <Route path="/tasks/word/:id" component={EditorWordForm}/>
+                    //
+                    <Route exact path="/tasks/word-numbers" component={WordNumbers}/>
+                    <Route path="/tasks/word-number/create" component={EditorWordNumberForm}/>
+                    <Route path="/tasks/word-number/:id" component={EditorWordNumberForm}/>
                     {/*<Route component={Login}/>*/}
                 </Switch>
             </Content>
