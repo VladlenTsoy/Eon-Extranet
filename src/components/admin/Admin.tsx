@@ -22,6 +22,8 @@ import {Words} from "./tasks/words/Words";
 import {EditorWordForm} from "./tasks/words/editor/Editor";
 import {WordNumbers} from "./tasks/word-numbers/WordNumbers";
 import {EditorWordNumberForm} from "./tasks/word-numbers/editor/Editor";
+import {Applications} from "./applications/Applications";
+import {EditorApplicationForm} from "./applications/editor/Editor";
 
 const {Content} = Layout;
 
@@ -46,6 +48,10 @@ export const Admin = () => {
                     <Route exact path="/categories" component={Categories}/>
                     <Route path="/categories/create" component={CreateCategory}/>
                     {/*<Route path="/categories/category/:id" component={CreateCategoryContainer}/>*/}
+                    <Route exact path="/applications" component={Applications}/>
+                    <Route path="/application/create" component={EditorApplicationForm}/>
+                    <Route path="/application/:id" component={EditorApplicationForm}/>
+                    //
                     <Route exact path="/tasks/digital-picture" component={DigitalPicture}/>
                     <Route path="/tasks/digital-picture/create" component={EditorDigitalPictureForm}/>
                     <Route path="/tasks/digital-picture/:id" component={EditorDigitalPictureForm}/>

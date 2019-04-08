@@ -33,6 +33,12 @@ export const Sidebar = ({stateSidebar, setStateSidebar}: any) => {
                     <span>Пользователи</span>
                 </Link>
             </Item>
+            <Item>
+                <Link to="/applications">
+                    <Icon type="notification" />
+                    <span>Пробный урок</span>
+                </Link>
+            </Item>
             <SubMenu title={<span><Icon type="setting"/><span>Настройки</span></span>}>
                 <Item>
                     <Link to="/cities">
