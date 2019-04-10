@@ -1,7 +1,9 @@
 import React from 'react';
-import {Button, Card, Icon} from 'antd';
+import {Button, Card, Icon, Typography} from 'antd';
 import {Link} from "react-router-dom";
 import {TableComponent} from "../layouts/table/Table";
+
+const {Title} = Typography;
 
 const columns = [{
     title: 'ID',
@@ -14,10 +16,9 @@ const columns = [{
     sorter: true,
 }, {
     title: 'Лого',
-    dataIndex: 'image',
+    dataIndex: 'url_image',
     render: (text: string | undefined, record: any) => text ?
         <img src={text} alt={record.title} width="40px"/> : 'Пусто',
-    sorter: true,
 }, {
     title: 'Город',
     dataIndex: 'city_id',
@@ -41,16 +42,19 @@ const columns = [{
     sorter: true,
 }, {
     title: <Icon type="bars"/>,
-    render: (text: any, record: any) => <Link to={`centers/center/${record.id}`}>
+    render: (text: any, record: any) => <Link to={`/center/${record.id}`}>
         <Button type="primary" shape="circle" icon="edit" htmlType="button"/>
     </Link>,
 }];
 
-export const Centers = (props: any) => {
-    return <div>
-        <Card className="_card">
-            <Link to="centers/create"><Button type="primary" htmlType="button">Создать центр</Button></Link>
+export const Centers = () => {
+    return <Card className="_card">
+            <div className="_card-title">
+                <Title level={3} className="title">Франшизы</Title>
+                <Link className="link" to="/center/create">
+                    <Button icon="plus" htmlType="button" type="primary">Создать</Button>
+                </Link>
+            </div>
             <TableComponent columns={columns} url="centers"/>
-        </Card>
-    </div>;
+        </Card>;
 };

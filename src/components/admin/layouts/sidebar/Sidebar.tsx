@@ -14,11 +14,17 @@ export const Sidebar = ({stateSidebar, setStateSidebar}: any) => {
         placement="left"
         onClose={() => setStateSidebar(false)}
         visible={stateSidebar}>
-        <Menu theme="light" mode="inline">
+        <Menu theme="dark" mode="inline">
             <Item>
                 <Link to="/">
                     <Icon type="home"/>
                     <span>Главная</span>
+                </Link>
+            </Item>
+            <Item>
+                <Link to="/franchises">
+                    <Icon type="book"/>
+                    <span>Франшизы</span>
                 </Link>
             </Item>
             <Item>
@@ -28,15 +34,33 @@ export const Sidebar = ({stateSidebar, setStateSidebar}: any) => {
                 </Link>
             </Item>
             <Item>
-                <Link to="/users">
+                <Link to="/centers">
                     <Icon type="team"/>
+                    <span>Группы</span>
+                </Link>
+            </Item>
+            <Item>
+                <Link to="/users">
+                    <Icon type="user"/>
                     <span>Пользователи</span>
                 </Link>
             </Item>
             <Item>
                 <Link to="/applications">
-                    <Icon type="notification" />
+                    <Icon type="notification"/>
                     <span>Пробный урок</span>
+                </Link>
+            </Item>
+            <Item>
+                <Link to="/applications">
+                    <Icon type="message"/>
+                    <span>Сообщения</span>
+                </Link>
+            </Item>
+            <Item disabled>
+                <Link to="/applications">
+                    <Icon type="shop"/>
+                    <span>Магазин</span>
                 </Link>
             </Item>
             <SubMenu title={<span><Icon type="setting"/><span>Настройки</span></span>}>

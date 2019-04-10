@@ -1,17 +1,20 @@
 import React, {createContext, useReducer, useContext} from "react";
 import {defaultUserState, userAction} from "./user/reducer";
 import {defaultApiState, apiAction} from "./api/reducer";
+import {defaultLanguageState, languagesAction} from "./language/reducer";
 
 const initialState = {
     user: defaultUserState,
     api: defaultApiState,
+    language: defaultLanguageState,
 };
 
 const StoreContext = createContext(initialState);
 
 const Actions = {
     ...userAction,
-    ...apiAction
+    ...apiAction,
+    ...languagesAction
 };
 
 const reducer = (state: any, action: { type: string, payload: any }) => {

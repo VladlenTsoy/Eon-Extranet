@@ -1,4 +1,5 @@
 import React from 'react';
+import './Navbar.less';
 import {Menu, Icon, Modal} from "antd";
 import {useStore} from "../../../../store/useStore";
 import {DELETE_CURRENT_USER_DATA} from "../../../../store/user/reducer";
@@ -8,7 +9,7 @@ const confirm = Modal.confirm;
 
 export const Navbar = ({stateSidebar, setStateSidebar}: any) => {
     // @ts-ignore
-    const {state, dispatch} = useStore();
+    const [state, dispatch] = useStore();
 
     // Выход
     const logout = () => {
@@ -24,10 +25,16 @@ export const Navbar = ({stateSidebar, setStateSidebar}: any) => {
 
     return (
         <Menu mode="horizontal" className="navbar">
-            <Item className="button-menu" onClick={() => setStateSidebar(true)}>
+            <Item className="button-menu mr-auto" onClick={() => setStateSidebar(true)}>
                 <Icon type="bars"/>
             </Item>
-            <Item className="" onClick={logout}>
+            <Item>
+                <Icon type="notification"/> Заявки
+            </Item>
+            <Item>
+                <Icon type="message"/> Сообщения
+            </Item>
+            <Item>
                 <Icon type="poweroff"/> Выход
             </Item>
         </Menu>

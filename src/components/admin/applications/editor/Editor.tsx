@@ -46,7 +46,6 @@ const EditorApplication = ({form, history, match}: any) => {
     const [categories, setCategories]: any = useState([]);
     const [outCategories, setOutCategories]: any = useState([]);
 
-
     const fetchDisciplines = () => state.api.guest('disciplines');
     const fetchCategories = () => state.api.guest('categories');
     const fetchCities = () => state.api.guest('cities');
@@ -71,7 +70,6 @@ const EditorApplication = ({form, history, match}: any) => {
         });
         return response;
     };
-
 
     const fetchData = async () => {
         setLoading(true);
@@ -104,7 +102,6 @@ const EditorApplication = ({form, history, match}: any) => {
     useEffect(() => {
         fetchData()
     }, []);
-
 
     const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();

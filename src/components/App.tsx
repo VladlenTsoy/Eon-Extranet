@@ -6,6 +6,7 @@ import {Icon} from "antd";
 import {Auth} from "./auth/Auth";
 import {Admin} from "./admin/Admin";
 import {FETCH_CURRENT_USER_DATA} from "../store/user/reducer";
+import {FETCH_LANGUAGES} from "../store/language/reducer";
 
 const App = () => {
     let [loader, setLoader] = useState(true);
@@ -20,16 +21,26 @@ const App = () => {
     };
 
     // Вывод данных текущего прользователя
-    let fetchCurrentUserData = () => {
-        state.api.user_general.get('')
+    let fetchCurrentUserData = async () => {
+        await state.api.user_general.get('')
             .then((response: any) => dispatch({type: FETCH_CURRENT_USER_DATA, payload: response.data}))
             .catch((error: any) => error)
             .finally(() => setLoader(false));
     };
 
-    useEffect(() => {
+    const fetchLanguages = async () => {
+        let response = await state.api.guest('languages');
+        dispatch({type: FETCH_LANGUAGES, payload: response.data.data});
+    };
+
+    let dataFetch = async () => {
         apiChangeAccessToken();
-        fetchCurrentUserData();
+        await fetchLanguages();
+        await fetchCurrentUserData();
+    };
+
+    useEffect(() => {
+        dataFetch();
     }, []);
 
     return (

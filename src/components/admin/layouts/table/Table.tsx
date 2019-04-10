@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from "react";
 import {Table, Input, Form} from 'antd';
 import {useStore} from "../../../../store/useStore";
 
-export const TableComponent = ({columns, url, loader, setLoader}: any) => {
+export const TableComponent = ({columns, url, access = 'user_access', loader, setLoader}: any) => {
     const [state] = useStore();
     const [data, setData] = useState([]);
     const [pagination, setPagination] = useState({pageIndex: 1, pageSize: 10, total: 0,});
@@ -11,7 +11,7 @@ export const TableComponent = ({columns, url, loader, setLoader}: any) => {
     const searchInput = useRef(null);
 
     const fetch = async (params: { results?: any; page?: any; sortField?: any; sortOrder?: any; search?: any; }) => {
-        let response = await state.api.user_access.get(url, {params: params});
+        let response = await state.api[access].get(url, {params: params});
         setLoading(false);
         setData(response.data.data);
         setPagination({...pagination, total: response.data.total});

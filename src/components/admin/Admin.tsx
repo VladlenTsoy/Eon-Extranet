@@ -6,10 +6,9 @@ import {Navbar} from './layouts/navbar/Navbar';
 import {Sidebar} from './layouts/sidebar/Sidebar';
 import {Home} from "./home/Home";
 import {Centers} from './centers/Centers';
-import {Cities} from './cities/Cities';
-import {Disciplines} from './disciplines/Disciplines';
-import {Categories} from './categories/Categories';
-import {CreateCategory} from "./categories/create/Create";
+import {Cities} from './settings/cities/Cities';
+import {Disciplines} from './settings/disciplines/Disciplines';
+import {Categories} from './settings/categories/Categories';
 import {DigitalPicture} from "./tasks/digital-picture/Digital.Picture";
 import {EditorDigitalPictureForm} from "./tasks/digital-picture/editor/Editor";
 import {Users} from "./users/Users";
@@ -24,29 +23,48 @@ import {WordNumbers} from "./tasks/word-numbers/WordNumbers";
 import {EditorWordNumberForm} from "./tasks/word-numbers/editor/Editor";
 import {Applications} from "./applications/Applications";
 import {EditorApplicationForm} from "./applications/editor/Editor";
+import {EditorCityForm} from "./settings/cities/editor/Editor";
+import {EditorCategoryForm} from "./settings/categories/editor/Editor";
+import {Franchises} from "./franchises/Franchises";
+import {EditorFranchiseForm} from "./franchises/editor/Editor";
+import {EditorCenterForm} from "./centers/editor/Editor";
 
 const {Content} = Layout;
 
 export const Admin = () => {
     let [stateSidebar, setStateSidebar] = useState(false);
     return <Router>
-        <Layout>
+        <Layout className="layout">
             <Sidebar stateSidebar={stateSidebar} setStateSidebar={setStateSidebar}/>
             <Navbar stateSidebar={stateSidebar} setStateSidebar={setStateSidebar}/>
             <Content className="admin-content">
                 <Switch>
                     <Route exact path="/" component={Home}/>
                     <Route exact path="/centers" component={Centers}/>
+                    <Route exact path="/center/create" component={EditorCenterForm}/>
+                    <Route exact path="/center/:id" component={EditorCenterForm}/>
+                    // Франшизы
+                    <Route exact path="/franchises" component={Franchises}/>
+                    <Route exact path="/franchise/create" component={EditorFranchiseForm}/>
+                    <Route exact path="/franchise/:id" component={EditorFranchiseForm}/>
+                    // Города
                     <Route exact path="/cities" component={Cities}/>
+                    <Route exact path="/city/create" component={EditorCityForm}/>
+                    <Route exact path="/city/:id" component={EditorCityForm}/>
+                    //
                     <Route exact path="/disciplines" component={Disciplines}/>
+                    //
                     <Route exact path="/users" component={Users}/>
                     <Route exact path="/users/user/0/:id" component={Pupil}/>
                     <Route exact path="/users/user/1/:id" component={Pupil}/>
                     <Route exact path="/users/user/2/:id" component={Pupil}/>
                     <Route exact path="/users/user/3/:id" component={Pupil}/>
                     <Route exact path="/users/user/4/:id" component={Pupil}/>
+                    //
                     <Route exact path="/categories" component={Categories}/>
-                    <Route path="/categories/create" component={CreateCategory}/>
+                    <Route exact path="/category/create" component={EditorCategoryForm}/>
+                    <Route exact path="/category/:id" component={EditorCategoryForm}/>
+
                     {/*<Route path="/categories/category/:id" component={CreateCategoryContainer}/>*/}
                     <Route exact path="/applications" component={Applications}/>
                     <Route path="/application/create" component={EditorApplicationForm}/>
