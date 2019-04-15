@@ -34,7 +34,7 @@ export const Navbar = ({stateSidebar, setStateSidebar}: any) => {
             <Item>
                 <Icon type="message"/> Сообщения
             </Item>
-            <Item>
+            <Item onClick={logout}>
                 <Icon type="poweroff"/> Выход
             </Item>
         </Menu>
