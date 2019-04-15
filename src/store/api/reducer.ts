@@ -2,7 +2,7 @@ const axios = require('axios');
 
 export const API_CHANGE_ACCESS_TOKEN = "API_CHANGE_ACCESS_TOKEN";
 
-// const DOMAIN_API = 'http://api.limitless.uz/api';
+// const DOMAIN_API = 'http://api2.eon.uz/api';
 const DOMAIN_API = 'http://api.eon.loc/api';
 
 export const defaultApiState = {

@@ -2,6 +2,7 @@ import React from 'react';
 import {Button, Card, Icon, Typography} from 'antd';
 import {Link} from "react-router-dom";
 import {TableComponent} from "../layouts/table/Table";
+import defaultImage from "../../../assets/images/default-thumbnail.jpg";
 
 const {Title} = Typography;
 
@@ -17,8 +18,8 @@ const columns = [{
 }, {
     title: 'Лого',
     dataIndex: 'url_image',
-    render: (text: string | undefined, record: any) => text ?
-        <img src={text} alt={record.title} width="40px"/> : 'Пусто',
+    render: (text: any) => <img src={text} onError={(e: any) => e.target.src = defaultImage}
+                                alt="Нет" width="40px"/>
 }, {
     title: 'Город',
     dataIndex: 'city_id',
@@ -50,7 +51,7 @@ const columns = [{
 export const Centers = () => {
     return <Card className="_card">
             <div className="_card-title">
-                <Title level={3} className="title">Франшизы</Title>
+                <Title level={3} className="title">Центры</Title>
                 <Link className="link" to="/center/create">
                     <Button icon="plus" htmlType="button" type="primary">Создать</Button>
                 </Link>

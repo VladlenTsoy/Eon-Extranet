@@ -1,9 +1,19 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {Button, Card, Icon, Typography} from "antd";
+import {Button, Card, Icon, Typography, Menu, Dropdown} from "antd";
 import {TableComponent} from "../layouts/table/Table";
+import defaultImage from '../../../assets/images/default-thumbnail.jpg';
 
 const {Title} = Typography;
+
+const menu = (text: any, record: any) => (<Menu>
+    <Menu.Item>
+        <Link to={`franchise/${record.id}`}><Icon type="edit"/> Изменить</Link>
+    </Menu.Item>
+    {/*<Menu.Item>*/}
+    {/*    <Link to={`franchise/${record.id}`}><Icon type="more"/> Подробнее</Link>*/}
+    {/*</Menu.Item>*/}
+</Menu>);
 
 export const Franchises = () => {
     const columns = [{
@@ -18,19 +28,17 @@ export const Franchises = () => {
     }, {
         title: 'Лого',
         dataIndex: 'url_image',
-        render: (text: any) => <img src={text} alt="Нет" width="40px"/>
+        render: (text: any) => <img src={text} onError={(e: any) => e.target.src = defaultImage}
+                                    alt="Нет" width="40px"/>
     }, {
         title: 'Директор',
         dataIndex: 'director_id',
         sorter: true,
         render: (text: any, record: any) => record.director || 'Нет'
     }, {
-        title: <Icon type="bars"/>,
-        render: (text: any, record: { id: any; }) => <div>
-            <Link to={`franchise/${record.id}`}>
-                <Button type="primary" shape="circle" icon="edit" htmlType="button"/>
-            </Link>
-        </div>,
+        render: (text: any, record: any) => <Dropdown overlay={menu(text, record)}>
+            <Button type="primary" shape="circle" icon="more"/>
+        </Dropdown>,
     }];
 
     return <div>

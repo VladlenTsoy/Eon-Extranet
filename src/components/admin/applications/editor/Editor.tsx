@@ -36,7 +36,7 @@ const Option = Select.Option;
 const EditorApplication = ({form, history, match}: any) => {
     const {getFieldDecorator} = form;
     const [state] = useStore();
-    const [application, setApplication]: any = useState({});
+    const [, setApplication]: any = useState({});
     const [loading, setLoading] = useState(false);
     const [loadingBtn, setLoadingBtn] = useState(false);
     const id = match.params.id;
@@ -127,9 +127,9 @@ const EditorApplication = ({form, history, match}: any) => {
                             {getFieldDecorator('discipline_id', {
                                 rules: [{required: true, message: 'Выберите дисциплину!'}],
                             })(
-                                <Select showSearch style={{width: '100%'}} onChange={changeDiscipline}
+                                <Select style={{width: '100%'}} onChange={changeDiscipline}
                                         placeholder="Выберите дисциплину">
-                                    {disciplines.map((discipline: { id: string | number | undefined; title: React.ReactNode; }, key: string | number | undefined): any =>
+                                    {disciplines.map((discipline: any, key: number): any =>
                                         <Option value={discipline.id} key={key}>{discipline.title}</Option>)}
                                 </Select>
                             )}
@@ -138,8 +138,8 @@ const EditorApplication = ({form, history, match}: any) => {
                             {getFieldDecorator('category_id', {
                                 rules: [{required: true, message: 'Выберите категорию!'}],
                             })(
-                                <Select showSearch style={{width: '100%'}} placeholder="Выберите категорию">
-                                    {outCategories.map((category: { id: string | number | undefined; title: React.ReactNode; }, key: string | number | undefined): any =>
+                                <Select style={{width: '100%'}} placeholder="Выберите категорию">
+                                    {outCategories.map((category: any, key: number): any =>
                                         <Option value={category.id} key={key}>{category.title}</Option>)}
                                 </Select>
                             )}
@@ -149,7 +149,7 @@ const EditorApplication = ({form, history, match}: any) => {
                                 rules: [{required: true, message: 'Выберите город!'}],
                             })(
                                 <Select showSearch style={{width: '100%'}} placeholder="Выберите город">
-                                    {cities.map((city: { id: string | number | undefined; title: React.ReactNode; }, key: string | number | undefined): any =>
+                                    {cities.map((city: any, key: number): any =>
                                         <Option value={city.id} key={key}>{city.title}</Option>)}
                                 </Select>
                             )}
@@ -215,7 +215,7 @@ const EditorApplication = ({form, history, match}: any) => {
                             {getFieldDecorator('find', {
                                 rules: [{required: true, message: 'Выберите один из вариантов!'}],
                             })(
-                                <Select showSearch style={{width: '100%'}} placeholder="Выберите один из вариантов">
+                                <Select style={{width: '100%'}} placeholder="Выберите один из вариантов">
                                     <Option value={0}>Поиск</Option>
                                     <Option value={1}>Facebook</Option>
                                     <Option value={2}>Instagram</Option>
@@ -227,7 +227,7 @@ const EditorApplication = ({form, history, match}: any) => {
                             {getFieldDecorator('created_with', {
                                 rules: [{required: true, message: 'Выберите один из вариантов!'}],
                             })(
-                                <Select showSearch style={{width: '100%'}} placeholder="Выберите место создания">
+                                <Select style={{width: '100%'}} placeholder="Выберите место создания">
                                     <Option value={0}>Основной</Option>
                                     <Option value={1}>Админ</Option>
                                 </Select>

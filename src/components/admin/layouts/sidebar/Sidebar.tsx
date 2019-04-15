@@ -34,7 +34,7 @@ export const Sidebar = ({stateSidebar, setStateSidebar}: any) => {
                 </Link>
             </Item>
             <Item>
-                <Link to="/centers">
+                <Link to="/groups">
                     <Icon type="team"/>
                     <span>Группы</span>
                 </Link>
@@ -52,7 +52,7 @@ export const Sidebar = ({stateSidebar, setStateSidebar}: any) => {
                 </Link>
             </Item>
             <Item>
-                <Link to="/applications">
+                <Link to="/chats">
                     <Icon type="message"/>
                     <span>Сообщения</span>
                 </Link>

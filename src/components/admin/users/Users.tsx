@@ -3,6 +3,7 @@ import {useStore} from "../../../store/useStore";
 import {Button, Card, Icon} from "antd";
 import {TableComponent} from "../layouts/table/Table";
 import {Link} from "react-router-dom";
+import defaultImage from "../../../assets/images/default-thumbnail.jpg";
 
 const columns = [{
     title: 'ID',
@@ -12,7 +13,7 @@ const columns = [{
 }, {
     title: 'Фото',
     dataIndex: 'image',
-    render: (text: any, record: any) => <img src={text} alt={record.first_name} width="30px"/>,
+    render: (text: any, record: any) => <img src={text} onError={(e: any) => e.target.src = defaultImage} alt={record.first_name} width="30px"/>,
 }, {
     title: 'Фамилия',
     dataIndex: 'last_name',
