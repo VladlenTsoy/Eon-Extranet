@@ -33,17 +33,17 @@ export const Categories = () => {
         dataIndex: 'title',
         sorter: true,
     }, {
-        title: 'Центер',
+        title: 'Центр',
         dataIndex: 'center_id',
-        render: (text: any, record: { center: React.ReactNode; }) => <Link
-            to={`/centers/center/${text}`}>{record.center}</Link>,
         sorter: true,
+        render: (text: any, record: { center: React.ReactNode; }) =>
+            <Link to={`/centers/center/${text}`}>{record.center}</Link>,
     }, {
         title: 'Дисциплина',
         dataIndex: 'discipline_id',
-        render: (text: any, record: { discipline: React.ReactNode; }) => <Link
-            to={`/disciplines/discipline/${text}`}>{record.discipline}</Link>,
         sorter: true,
+        render: (text: any, record: { discipline: React.ReactNode; }) =>
+            <Link to={`/disciplines/discipline/${text}`}>{record.discipline}</Link>,
     }, {
         title: <Icon type="bars"/>,
         render: (text: any, record: { id: any; }) => <div>
