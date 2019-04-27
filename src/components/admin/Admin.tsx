@@ -12,7 +12,7 @@ import {Categories} from './settings/categories/Categories';
 import {DigitalPicture} from "./tasks/digital-picture/Digital.Picture";
 import {EditorDigitalPictureForm} from "./tasks/digital-picture/editor/Editor";
 import {Users} from "./users/Users";
-import {Pupil} from "./users/pupil/Pupil";
+import {PupilForm} from "./users/pupil/Pupil";
 import {Countries} from "./tasks/countires/Countries";
 import {EditorCountryForm} from "./tasks/countires/editor/Editor";
 import {Personalities} from "./tasks/personalities/Personalities";
@@ -49,7 +49,8 @@ export const Admin = () => {
                     // Франшизы
                     <Route exact path="/franchises" component={Franchises}/>
                     <Route exact path="/franchise/create" component={EditorFranchiseForm}/>
-                    <Route exact path="/franchise/:id" component={EditorFranchiseForm}/>
+                    <Route exact path="/franchise/:id/edit" component={EditorFranchiseForm}/>
+                    <Route exact path="/franchise/:id/more" component={EditorFranchiseForm}/>
                     // Города
                     <Route exact path="/cities" component={Cities}/>
                     <Route exact path="/city/create" component={EditorCityForm}/>
@@ -62,11 +63,11 @@ export const Admin = () => {
                     <Route exact path="/chats" component={Chats}/>
                     // Пользователи
                     <Route exact path="/users" component={Users}/>
-                    <Route exact path="/users/user/0/:id" component={Pupil}/>
-                    <Route exact path="/users/user/1/:id" component={Pupil}/>
-                    <Route exact path="/users/user/2/:id" component={Pupil}/>
-                    <Route exact path="/users/user/3/:id" component={Pupil}/>
-                    <Route exact path="/users/user/4/:id" component={Pupil}/>
+                    <Route exact path="/users/user/0/:id/:key" component={PupilForm}/>
+                    <Route exact path="/users/user/1/:id:key?" component={PupilForm}/>
+                    <Route exact path="/users/user/2/:id:key" component={PupilForm}/>
+                    <Route exact path="/users/user/3/:id:key" component={PupilForm}/>
+                    <Route exact path="/users/user/4/:id:key" component={PupilForm}/>
                     // Категории
                     <Route exact path="/categories" component={Categories}/>
                     <Route exact path="/category/create" component={EditorCategoryForm}/>

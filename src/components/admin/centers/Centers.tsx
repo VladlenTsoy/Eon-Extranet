@@ -4,13 +4,15 @@ import {Link} from "react-router-dom";
 import {TableComponent} from "../layouts/table/Table";
 import defaultImage from "../../../assets/images/default-thumbnail.jpg";
 
-const {Title} = Typography;
+const {Title, Text} = Typography;
 
 const columns = [{
     title: 'ID',
     dataIndex: 'id',
     defaultSortOrder: 'descend',
     sorter: true,
+    render: (id: number, record: any) => record.hide === null ? id :
+        <Text type="danger">{id} <Icon type="eye-invisible"/></Text>
 }, {
     title: 'Название',
     dataIndex: 'title',
@@ -18,8 +20,8 @@ const columns = [{
 }, {
     title: 'Лого',
     dataIndex: 'url_image',
-    render: (text: any) => <img src={text} onError={(e: any) => e.target.src = defaultImage}
-                                alt="Нет" width="40px"/>
+    render: (text: any) => <img src={text} alt="Нет" width="40px"
+                                onError={(e: any) => e.target.src = defaultImage}/>
 }, {
     title: 'Город',
     dataIndex: 'city_id',
@@ -37,6 +39,18 @@ const columns = [{
     render: (text: any, record: any) => record.director,
     sorter: true,
 }, {
+    title: 'Учителей',
+    dataIndex: 'number_of_teachers',
+    render: (teachers: any) => <div>
+        <Text type="warning">{teachers.active}</Text> / <Text type="secondary">{teachers.all}</Text>
+    </div>,
+}, {
+    title: 'Учеников',
+    dataIndex: 'number_of_students',
+    render: (students: any) => <div>
+        <Text type="warning">{students.active}</Text> / <Text type="secondary">{students.all}</Text>
+    </div>,
+}, {
     title: 'Создан',
     dataIndex: 'created_at',
     render: (text: any) => `${text || 'Неизвестно'}`,
@@ -50,12 +64,12 @@ const columns = [{
 
 export const Centers = () => {
     return <Card className="_card">
-            <div className="_card-title">
-                <Title level={3} className="title">Центры</Title>
-                <Link className="link" to="/center/create">
-                    <Button icon="plus" htmlType="button" type="primary">Создать</Button>
-                </Link>
-            </div>
-            <TableComponent columns={columns} url="centers"/>
-        </Card>;
+        <div className="_card-title">
+            <Title level={3} className="title">Центры</Title>
+            <Link className="link" to="/center/create">
+                <Button icon="plus" htmlType="button" type="primary">Создать</Button>
+            </Link>
+        </div>
+        <TableComponent columns={columns} url="centers"/>
+    </Card>;
 };

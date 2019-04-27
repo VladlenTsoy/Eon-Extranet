@@ -5,7 +5,7 @@ import {withRouter} from "react-router";
 
 const {Title} = Typography;
 
-export const Editor = withRouter(({form, history, title, linkToSave, reference, loading, id, children}: any) => {
+export const Editor = withRouter(({form, history, title, linkToSave, reference, loading, id, children, span = 12}: any) => {
     const [state] = useStore();
     const [loadingBtn, setLoadingBtn] = useState(false);
 
@@ -24,7 +24,7 @@ export const Editor = withRouter(({form, history, title, linkToSave, reference, 
 
     return <Form onSubmit={handleSubmit}>
         <Row type="flex" justify="center">
-            <Col span={12}>
+            <Col span={span}>
                 <Card className="_card">
                     <Title level={3} className="title">{title}</Title>
                     <Skeleton loading={loading} active/>
