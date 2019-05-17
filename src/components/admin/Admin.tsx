@@ -29,7 +29,8 @@ import {Franchises} from "./franchises/Franchises";
 import {EditorFranchiseForm} from "./franchises/editor/Editor";
 import {EditorCenterForm} from "./centers/editor/Editor";
 import {Groups} from "./groups/Groups";
-import {Chats} from "./chats/Chats";
+import {Prices} from "./settings/prices/Prices";
+import {EditorPriceForm} from "./settings/prices/editor/Editor";
 
 const {Content} = Layout;
 
@@ -59,8 +60,6 @@ export const Admin = () => {
                     <Route exact path="/disciplines" component={Disciplines}/>
                     // Группы
                     <Route exact path="/groups" component={Groups}/>
-                    // Чат
-                    <Route exact path="/chats" component={Chats}/>
                     // Пользователи
                     <Route exact path="/users" component={Users}/>
                     <Route exact path="/users/user/0/:id/:key" component={PupilForm}/>
@@ -76,6 +75,10 @@ export const Admin = () => {
                     <Route exact path="/applications" component={Applications}/>
                     <Route path="/application/create" component={EditorApplicationForm}/>
                     <Route path="/application/:id" component={EditorApplicationForm}/>
+                    // Цены
+                    <Route exact path="/prices" component={Prices}/>
+                    <Route path="/price/create" component={EditorPriceForm}/>
+                    <Route path="/price/:id" component={EditorPriceForm}/>
                     // Цифра-Картинка
                     <Route exact path="/tasks/digital-picture" component={DigitalPicture}/>
                     <Route path="/tasks/digital-picture/create" component={EditorDigitalPictureForm}/>
