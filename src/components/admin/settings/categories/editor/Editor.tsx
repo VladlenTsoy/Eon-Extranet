@@ -50,8 +50,8 @@ const EditorCategory = ({form, history, match}: any) => {
     };
 
     useEffect(() => {
-        fetchData();
         setLoading(true);
+        fetchData();
     }, []);
 
     const filterOption = (input: string, option: any) => {
