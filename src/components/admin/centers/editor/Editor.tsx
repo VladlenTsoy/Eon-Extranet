@@ -13,6 +13,7 @@ const EditorCenter = ({match, form}: any) => {
     const {getFieldDecorator} = form;
     const [cities, setCities] = useState([]);
     const [franchises, setFranchises] = useState([]);
+    const [prices, setPrices] = useState([]);
     const [position, setPosition]: any = useState(false);
     const [mapPosition, setMapPosition]: any = useState({lat: 41.29242, lng: 69.27517});
     const [loading, setLoading] = useState(true);
@@ -26,9 +27,11 @@ const EditorCenter = ({match, form}: any) => {
     const fetchData = async () => {
         let cities = await state.api.guest.get('cities');
         let franchises = await state.api.user_access.get('franchises');
+        let prices = await state.api.user_access.get('prices');
 
         setCities(cities.data.data);
         setFranchises(franchises.data.data);
+        setPrices(prices.data.data);
 
         if (id) {
             let response = await state.api.user_access.get(`center/${id}`);
@@ -89,6 +92,16 @@ const EditorCenter = ({match, form}: any) => {
                     })(
                         <Select showSearch style={{width: '100%'}} placeholder="Выберите франшизу">
                             {franchises.map((option: any, key: any): any =>
+                                <Option value={option.id} key={key}>{option.title}</Option>)}
+                        </Select>
+                    )}
+                </Form.Item>
+                <Form.Item label="Прайс">
+                    {getFieldDecorator('price_id', {
+                        rules: [{required: true, message: 'Выберите прайс!'}],
+                    })(
+                        <Select showSearch style={{width: '100%'}} placeholder="Выберите прайс">
+                            {prices.map((option: any, key: any): any =>
                                 <Option value={option.id} key={key}>{option.title}</Option>)}
                         </Select>
                     )}

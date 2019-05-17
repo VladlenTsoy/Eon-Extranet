@@ -51,6 +51,11 @@ const columns = [{
         <Text type="warning">{students.active}</Text> / <Text type="secondary">{students.all}</Text>
     </div>,
 }, {
+    title: 'Прайс',
+    dataIndex: 'price_id',
+    render: (text: any, record: any) => `${record.price || 'Нет'}`,
+    sorter: true,
+}, {
     title: 'Создан',
     dataIndex: 'created_at',
     render: (text: any) => `${text || 'Неизвестно'}`,
