@@ -4,6 +4,7 @@ export const API_CHANGE_ACCESS_TOKEN = "API_CHANGE_ACCESS_TOKEN";
 
 // const DOMAIN_API = 'http://api2.eon.uz/api';
 const DOMAIN_API = 'http://192.168.1.105:8000/api';
+// const DOMAIN_API = 'http://192.168.0.103:8000/api';
 
 export const defaultApiState = {
     domain: DOMAIN_API,

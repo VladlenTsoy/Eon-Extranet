@@ -51,12 +51,6 @@ export const Sidebar = ({stateSidebar, setStateSidebar}: any) => {
                     <span>Пробный урок</span>
                 </Link>
             </Item>
-            <Item>
-                <Link to="/chats">
-                    <Icon type="message"/>
-                    <span>Сообщения</span>
-                </Link>
-            </Item>
             <Item disabled>
                 <Link to="/applications">
                     <Icon type="shop"/>
@@ -68,6 +62,12 @@ export const Sidebar = ({stateSidebar, setStateSidebar}: any) => {
                     <Link to="/cities">
                         <Icon type="pushpin"/>
                         <span>Города</span>
+                    </Link>
+                </Item>
+                <Item>
+                    <Link to="/prices">
+                        <Icon type="credit-card"/>
+                        <span>Цены</span>
                     </Link>
                 </Item>
                 <Item>

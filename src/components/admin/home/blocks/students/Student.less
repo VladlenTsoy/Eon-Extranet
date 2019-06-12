@@ -1,0 +1,29 @@
+@bsc-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+
+.card-chart-statistic{
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  border: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: @bsc-box-shadow;
+  position: relative;
+
+  .ant-card-body {
+    padding: 0;
+    height: 200px;
+  }
+
+  .chart-line{
+    position: relative;
+    z-index: -1;
+  }
+
+  .chart-title-block{
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1;
+    pointer-events: none;
+  }
+}

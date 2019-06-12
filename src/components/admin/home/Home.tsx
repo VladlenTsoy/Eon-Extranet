@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './Home.less';
 import {Card, Col, Row, Icon, Skeleton} from "antd";
 import {useStore} from "../../../store/useStore";
+import {StatisticStudent} from "./blocks/students/Students";
 
 export const Home = () => {
     let [state] = useStore();
@@ -18,6 +19,13 @@ export const Home = () => {
     return <div>
         <Row type="flex" justify="center">
             {/* Ученики */}
+            <Col lg={12}>
+                <StatisticStudent/>
+            </Col>
+            {/* Учителя */}
+            <Col lg={12}>
+                <StatisticStudent/>
+            </Col>
             <Col lg={4} md={6}>
                 <Card className="card-statistic card-users">
                     <Skeleton loading={!statistic} active>

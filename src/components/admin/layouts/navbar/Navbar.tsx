@@ -3,13 +3,14 @@ import './Navbar.less';
 import {Menu, Icon, Modal} from "antd";
 import {useStore} from "../../../../store/useStore";
 import {DELETE_CURRENT_USER_DATA} from "../../../../store/user/reducer";
+import {Link} from "react-router-dom";
 
 const Item = Menu.Item;
 const confirm = Modal.confirm;
 
-export const Navbar = ({stateSidebar, setStateSidebar}: any) => {
-    // @ts-ignore
+export const Navbar = ({setStateSidebar}: any) => {
     const [state, dispatch] = useStore();
+    const {user} = state;
 
     // Выход
     const logout = () => {
@@ -25,14 +26,16 @@ export const Navbar = ({stateSidebar, setStateSidebar}: any) => {
 
     return (
         <Menu mode="horizontal" className="navbar">
-            <Item className="button-menu mr-auto" onClick={() => setStateSidebar(true)}>
+            <Item className="button-menu" onClick={() => setStateSidebar(true)}>
                 <Icon type="bars"/>
             </Item>
-            <Item>
-                <Icon type="notification"/> Заявки
+            <Item className="mr-auto">
+                {user.last_name} {user.first_name}
             </Item>
             <Item>
-                <Icon type="message"/> Сообщения
+                <Link to="/applications">
+                    <Icon type="notification"/> Заявки
+                </Link>
             </Item>
             <Item onClick={logout}>
                 <Icon type="poweroff"/> Выход
