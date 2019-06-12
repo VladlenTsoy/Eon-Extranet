@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {Button, Card, Icon, Typography, Menu, Dropdown} from "antd";
+import {Button, Card, Icon, Typography, Menu, Dropdown, Tooltip} from "antd";
 import {TableComponent} from "../layouts/table/Table";
 import defaultImage from '../../../assets/images/default-thumbnail.jpg';
 
@@ -34,19 +34,24 @@ export const Franchises = () => {
         title: 'Центров',
         dataIndex: 'number_of_centers',
         render: (centers: any) => <div>
-            <Text type="warning">{centers.active}</Text> / <Text type="secondary">{centers.all}</Text>
+            <Tooltip title="Активные"><span className="table-count-out open">{centers.active}</span></Tooltip>
+            <Tooltip title="Всего"><span className="table-count-out">{centers.all}</span></Tooltip>
         </div>,
     }, {
         title: 'Учителей',
         dataIndex: 'number_of_teachers',
         render: (teachers: any) => <div>
-            <Text type="warning">{teachers.active}</Text> / <Text type="secondary">{teachers.all}</Text>
+            <Tooltip title="Были активны в течении месяца"><span className="table-count-out active">{teachers.active}</span></Tooltip>
+            <Tooltip title="Открытые"><span className="table-count-out open">{teachers.open}</span></Tooltip>
+            <Tooltip title="Всего"><span className="table-count-out">{teachers.all}</span></Tooltip>
         </div>,
     }, {
         title: 'Учеников',
         dataIndex: 'number_of_students',
         render: (students: any) => <div>
-            <Text type="warning">{students.active}</Text> / <Text type="secondary">{students.all}</Text>
+            <Tooltip title="Были активны в течении месяца"><span className="table-count-out active">{students.active}</span></Tooltip>
+            <Tooltip title="Открытые"><span className="table-count-out open">{students.open}</span></Tooltip>
+            <Tooltip title="Всего"><span className="table-count-out">{students.all}</span></Tooltip>
         </div>,
     }, {
         title: 'Директор',
