@@ -8,8 +8,11 @@ const {Title, Text} = Typography;
 
 const menu = (text: any, record: any) => (<Menu>
     <Menu.Item>
-        <Link to={`franchise/${record.id}/more`}><Icon type="info-circle"/> Подробнее</Link>
+        <Link to={`franchise/${record.id}/centers`}><Icon type="info-circle"/> Подробнее</Link>
     </Menu.Item>
+    {/*<Menu.Item>*/}
+    {/*    <Link to={`franchise/${record.id}/more`}><Icon type="info-circle"/> Подробнее</Link>*/}
+    {/*</Menu.Item>*/}
     <Menu.Item>
         <Link to={`franchise/${record.id}/edit`}><Icon type="edit"/> Изменить</Link>
     </Menu.Item>

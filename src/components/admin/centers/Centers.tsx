@@ -53,7 +53,7 @@ const columns = [{
         <Tooltip title="Были активны в течении месяца"><span className="table-count-out active">{students.active}</span></Tooltip>
         <Tooltip title="Открытые"><span className="table-count-out open">{students.open}</span></Tooltip>
         <Tooltip title="Всего"><span className="table-count-out">{students.all}</span></Tooltip>
-        </div>,
+    </div>,
 }, {
     title: 'Прайс',
     dataIndex: 'price_id',
@@ -71,7 +71,8 @@ const columns = [{
     </Link>,
 }];
 
-export const Centers = () => {
+export const Centers = ({match}: any) => {
+    const id = match.params.franchiseId;
     return <Card className="_card">
         <div className="_card-title">
             <Title level={3} className="title">Центры</Title>
@@ -79,6 +80,6 @@ export const Centers = () => {
                 <Button icon="plus" htmlType="button" type="primary">Создать</Button>
             </Link>
         </div>
-        <TableComponent columns={columns} url="centers"/>
+        <TableComponent columns={columns} url={id ? `centers/franchise/${id}` : `centers`}/>
     </Card>;
 };

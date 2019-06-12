@@ -52,6 +52,7 @@ export const Admin = () => {
                     <Route exact path="/franchise/create" component={EditorFranchiseForm}/>
                     <Route exact path="/franchise/:id/edit" component={EditorFranchiseForm}/>
                     <Route exact path="/franchise/:id/more" component={EditorFranchiseForm}/>
+                    <Route exact path="/franchise/:franchiseId/centers" component={Centers}/>
                     // Города
                     <Route exact path="/cities" component={Cities}/>
                     <Route exact path="/city/create" component={EditorCityForm}/>
