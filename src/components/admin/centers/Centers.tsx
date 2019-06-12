@@ -39,6 +39,10 @@ const columns = [{
     render: (text: any, record: any) => record.director,
     sorter: true,
 }, {
+    title: 'Прайс',
+    dataIndex: 'price',
+    render: (text: any, record: any) => record.price ? record.price.title : <Text type="secondary">Нет</Text>
+}, {
     title: 'Учителей',
     dataIndex: 'number_of_teachers',
     render: (teachers: any) => <div>
@@ -46,6 +50,9 @@ const columns = [{
         <Tooltip title="Открытые"><span className="table-count-out open">{teachers.open}</span></Tooltip>
         <Tooltip title="Всего"><span className="table-count-out">{teachers.all}</span></Tooltip>
     </div>,
+}, {
+    title: 'Сум',
+    dataIndex: 'number_of_teachers.cost',
 }, {
     title: 'Учеников',
     dataIndex: 'number_of_students',
@@ -55,10 +62,8 @@ const columns = [{
         <Tooltip title="Всего"><span className="table-count-out">{students.all}</span></Tooltip>
     </div>,
 }, {
-    title: 'Прайс',
-    dataIndex: 'price_id',
-    render: (text: any, record: any) => `${record.price || 'Нет'}`,
-    sorter: true,
+    title: 'Сум',
+    dataIndex: 'number_of_students.cost',
 }, {
     title: 'Создан',
     dataIndex: 'created_at',

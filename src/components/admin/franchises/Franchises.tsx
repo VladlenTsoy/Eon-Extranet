@@ -58,9 +58,8 @@ export const Franchises = () => {
             <Tooltip title="Всего"><span className="table-count-out">{teachers.all}</span></Tooltip>
         </div>,
     }, {
-        title: '',
+        title: 'Сум',
         dataIndex: 'number_of_teachers.cost',
-        render: (cost: string) => <div>{cost} сум</div>,
     }, {
         title: 'Учеников',
         dataIndex: 'number_of_students',
@@ -71,9 +70,8 @@ export const Franchises = () => {
             <Tooltip title="Всего"><span className="table-count-out">{students.all}</span></Tooltip>
         </div>,
     }, {
-        title: '',
+        title: 'Сум',
         dataIndex: 'number_of_students.cost',
-        render: (cost: string) => <div>{cost}</div>,
     }, {
         render: (text: any, record: any) => <Dropdown overlay={menu(text, record)}>
             <Button type="primary" shape="circle" icon="more"/>

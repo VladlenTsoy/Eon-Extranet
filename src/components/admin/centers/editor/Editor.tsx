@@ -42,6 +42,7 @@ const EditorCenter = ({match, form}: any) => {
                 city_id: response.data.city_id,
                 franchise_id: response.data.franchise_id,
                 position: response.data.position,
+                price_id: response.data.price ? response.data.price.id : null,
             });
             setPosition(response.data.position);
             setMapPosition(response.data.position);
@@ -97,10 +98,8 @@ const EditorCenter = ({match, form}: any) => {
                     )}
                 </Form.Item>
                 <Form.Item label="Прайс">
-                    {getFieldDecorator('price_id', {
-                        rules: [{required: true, message: 'Выберите прайс!'}],
-                    })(
-                        <Select showSearch style={{width: '100%'}} placeholder="Выберите прайс">
+                    {getFieldDecorator('price_id')(
+                        <Select showSearch style={{width: '100%'}} placeholder="Выберите прайс" disabled={true}>
                             {prices.map((option: any, key: any): any =>
                                 <Option value={option.id} key={key}>{option.title}</Option>)}
                         </Select>
