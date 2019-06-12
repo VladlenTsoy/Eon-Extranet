@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {Button, Card, Icon, Typography, Menu, Dropdown, Tooltip} from "antd";
+import {Button, Card, Icon, Typography, Menu, Dropdown, Tooltip, Tag} from "antd";
 import {TableComponent} from "../layouts/table/Table";
 import defaultImage from '../../../assets/images/default-thumbnail.jpg';
 
@@ -31,6 +31,14 @@ export const Franchises = () => {
         render: (text: any) => <img src={text} alt="Нет" width="40px"
                                     onError={(e: any) => e.target.src = defaultImage}/>
     }, {
+        title: 'Директор',
+        dataIndex: 'director_id',
+        render: (text: any, record: any) => record.director || <Text type="secondary">Нет</Text>
+    }, {
+        title: 'Прайс',
+        dataIndex: 'price',
+        render: (text: any, record: any) => record.price ? record.price.title : <Text type="secondary">Нет</Text>
+    }, {
         title: 'Центров',
         dataIndex: 'number_of_centers',
         render: (centers: any) => <div>
@@ -41,23 +49,28 @@ export const Franchises = () => {
         title: 'Учителей',
         dataIndex: 'number_of_teachers',
         render: (teachers: any) => <div>
-            <Tooltip title="Были активны в течении месяца"><span className="table-count-out active">{teachers.active}</span></Tooltip>
+            <Tooltip title="Были активны в течении месяца"><span
+                className="table-count-out active">{teachers.active}</span></Tooltip>
             <Tooltip title="Открытые"><span className="table-count-out open">{teachers.open}</span></Tooltip>
             <Tooltip title="Всего"><span className="table-count-out">{teachers.all}</span></Tooltip>
         </div>,
     }, {
+        title: '',
+        dataIndex: 'number_of_teachers.cost',
+        render: (cost: string) => <div>{cost} сум</div>,
+    }, {
         title: 'Учеников',
         dataIndex: 'number_of_students',
         render: (students: any) => <div>
-            <Tooltip title="Были активны в течении месяца"><span className="table-count-out active">{students.active}</span></Tooltip>
+            <Tooltip title="Были активны в течении месяца"><span
+                className="table-count-out active">{students.active}</span></Tooltip>
             <Tooltip title="Открытые"><span className="table-count-out open">{students.open}</span></Tooltip>
             <Tooltip title="Всего"><span className="table-count-out">{students.all}</span></Tooltip>
         </div>,
     }, {
-        title: 'Директор',
-        dataIndex: 'director_id',
-        sorter: true,
-        render: (text: any, record: any) => record.director || 'Нет'
+        title: '',
+        dataIndex: 'number_of_students.cost',
+        render: (cost: string) => <div>{cost}</div>,
     }, {
         render: (text: any, record: any) => <Dropdown overlay={menu(text, record)}>
             <Button type="primary" shape="circle" icon="more"/>
