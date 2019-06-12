@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Card, Icon, Typography} from 'antd';
+import {Button, Tooltip, Card, Icon, Typography} from 'antd';
 import {Link} from "react-router-dom";
 import {TableComponent} from "../layouts/table/Table";
 import defaultImage from "../../../assets/images/default-thumbnail.jpg";
@@ -42,14 +42,18 @@ const columns = [{
     title: 'Учителей',
     dataIndex: 'number_of_teachers',
     render: (teachers: any) => <div>
-        <Text type="warning">{teachers.active}</Text> / <Text type="secondary">{teachers.all}</Text>
+        <Tooltip title="Были активны в течении месяца"><span className="table-count-out active">{teachers.active}</span></Tooltip>
+        <Tooltip title="Открытые"><span className="table-count-out open">{teachers.open}</span></Tooltip>
+        <Tooltip title="Всего"><span className="table-count-out">{teachers.all}</span></Tooltip>
     </div>,
 }, {
     title: 'Учеников',
     dataIndex: 'number_of_students',
     render: (students: any) => <div>
-        <Text type="warning">{students.active}</Text> / <Text type="secondary">{students.all}</Text>
-    </div>,
+        <Tooltip title="Были активны в течении месяца"><span className="table-count-out active">{students.active}</span></Tooltip>
+        <Tooltip title="Открытые"><span className="table-count-out open">{students.open}</span></Tooltip>
+        <Tooltip title="Всего"><span className="table-count-out">{students.all}</span></Tooltip>
+        </div>,
 }, {
     title: 'Прайс',
     dataIndex: 'price_id',
