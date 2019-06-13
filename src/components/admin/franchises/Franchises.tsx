@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {Button, Card, Icon, Typography, Menu, Dropdown, Tooltip, Tag} from "antd";
+import {Button, Card, Icon, Typography, Menu, Dropdown, Tooltip} from "antd";
 import {TableComponent} from "../layouts/table/Table";
 import defaultImage from '../../../assets/images/default-thumbnail.jpg';
 
@@ -36,7 +36,7 @@ export const Franchises = () => {
     }, {
         title: 'Директор',
         dataIndex: 'director_id',
-        render: (text: any, record: any) => record.director || <Text type="secondary">Нет</Text>
+        render: (text: any, record: any) => <Link to={`users/user/3/${record.director_id}`}>{record.director}</Link>|| <Text type="secondary">Нет</Text>
     }, {
         title: 'Прайс',
         dataIndex: 'price',

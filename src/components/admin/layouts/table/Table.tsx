@@ -42,7 +42,7 @@ export const TableComponent = ({columns, url, access = 'user_access', loader, se
         });
     };
 
-    const searchOnTable = (e: any) => {
+    const searchOnTable = () => {
         clearTimeout(timer);
         // @ts-ignore
         let search = searchInput.current.state.value;

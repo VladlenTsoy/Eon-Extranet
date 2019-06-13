@@ -1,5 +1,4 @@
 import React from 'react';
-import {useStore} from "../../../store/useStore";
 import {Button, Card, Icon} from "antd";
 import {TableComponent} from "../layouts/table/Table";
 import {Link} from "react-router-dom";
@@ -65,8 +64,6 @@ const columns = [{
 }];
 
 export const Users = () => {
-    let [state] = useStore();
-
     return <div>
         <Card className="_card">
             <TableComponent columns={columns} url="users"/>
