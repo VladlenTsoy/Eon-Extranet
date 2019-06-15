@@ -36,7 +36,9 @@ export const Franchises = () => {
     }, {
         title: 'Директор',
         dataIndex: 'director_id',
-        render: (text: any, record: any) => <Link to={`users/user/3/${record.director_id}`}>{record.director}</Link>|| <Text type="secondary">Нет</Text>
+        render: (text: any, record: any) => record.director ?
+            <Link to={`users/user/3/${record.director_id}`}>{record.director}</Link> :
+            <Text type="secondary">Нет</Text>
     }, {
         title: 'Прайс',
         dataIndex: 'price',

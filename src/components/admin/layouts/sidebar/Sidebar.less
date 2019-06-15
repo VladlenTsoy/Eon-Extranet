@@ -1,72 +1,55 @@
-@bg-sidebar: #001529;
-
 .sidebar {
-  .ant-drawer-wrapper-body {
-    background: @bg-sidebar;
+  .ant-menu {
+    border: 0;
 
-    .ant-drawer-header {
-      background: @bg-sidebar;
-      padding: 0.5rem 0 0.75rem 24px;
-      //text-align: center;
-      border-bottom: 0;
-      box-shadow: 0 2px 15px 0 rgba(0, 0, 0, .05);
+    .wrapper-logo {
+      width: 100%;
+      overflow: hidden;
+      padding: 0.5rem 1.5rem;
+      height: 46px;
+      box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
       position: relative;
       z-index: 5;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-      margin-bottom: 0.75rem;
+      text-align: center;
 
-      .top-logo {
-        max-height: 100%;
-        max-width: 64%;
-      }
-    }
-
-    .ant-drawer-close {
-      height: 60px;
-      line-height: 60px;
-
-      i {
-        min-width: 14px;
-        font-size: 14px;
-        vertical-align: middle;
-        //background: #bfbfbf;
-        color: rgba(255, 255, 255, 0.65);
-        border: 1px solid rgba(255, 255, 255, 0.65);
-        //color: rgba(255, 255, 255, 0.65);
-        padding: 6px;
-        border-radius: 50%;
-        box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
-      }
-    }
-
-    .ant-drawer-close:hover {
-      i {
-        color: #ffffff;
-        border-color: #ffffff;
-      }
-    }
-
-    .ant-drawer-body {
-      padding: 0;
-      overflow-x: hidden;
-
-      .ant-menu-inline {
-        border: 0;
-
-        .ant-menu-item, .ant-menu-submenu {
-          font-size: 16px;
-
-          span {
-            font-size: 16px;
-          }
-
-          .anticon {
-            min-width: 25px;
-            font-size: 25px;
-            margin-right: 1.1rem;
-            vertical-align: middle;
-          }
+      .logo {
+        transition: all 0.2s ease-in-out;
+        height: 100%;
+        width: 100%;
+        img {
+          height: 100%;
         }
+      }
+    }
+
+    &.ant-menu-inline-collapsed{
+      .logo {
+        width: 25px;
+        overflow: hidden;
+        margin: 0 auto;
+      }
+    }
+
+    .ant-menu-item, .ant-menu-submenu {
+      &.ant-menu-item-selected {
+        background: #ffffff;
+
+        &::after {
+          border: 0;
+        }
+      }
+
+      span {
+        font-size: 14px;
+      }
+
+      .anticon {
+        line-height: 20px;
+        min-width: 20px;
+        font-size: 20px;
+        margin-right: 1.1rem;
+        vertical-align: middle;
       }
     }
   }

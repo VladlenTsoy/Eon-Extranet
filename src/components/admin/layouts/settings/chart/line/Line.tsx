@@ -8,7 +8,7 @@ export const ChartLine = ({data, mouseEnter}: any) => (
         yScale={{type: 'linear', stacked: true, min: 'auto', max: 'auto'}}
         // @ts-ignore
         curve="cardinal"
-        colors={{scheme: 'nivo'}}
+        // colors={{scheme: 'set1'}}
         pointSize={10}
         pointColor={{theme: 'background'}}
         pointBorderWidth={2}
@@ -20,11 +20,14 @@ export const ChartLine = ({data, mouseEnter}: any) => (
         axisRight={null}
         axisLeft={null}
         axisBottom={null}
-        enableArea={true}
+        enableArea={false}
+        enableCrosshair={false}
+        sliceTooltip={()=>({})}
         useMesh={true}
         enableGridX={false}
-        enableGridY={true}
+        enableGridY={false}
         areaOpacity={0.7}
         onMouseMove={mouseEnter}
+        colors={['#fff', '#FF5370']}
     />
 );

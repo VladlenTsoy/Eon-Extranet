@@ -1,10 +1,6 @@
-@bsc-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
-@color-grey: #b9b9b9;
-@color-primary: #b13038;
 
 .card-statistic {
   margin-bottom: 1rem;
-  margin-right: 1rem;
   border: 0;
   border-radius: 10px;
   box-shadow: @bsc-box-shadow;
@@ -19,7 +15,7 @@
     .title {
       display: inline-flex;
       font-size: 12px;
-      color: @color-grey;
+      color: @secondary-color;
       width: 100%;
       align-items: center;
     }
@@ -27,6 +23,8 @@
     .icon {
       display: inline-flex;
       font-size: 12px;
+      align-items: center;
+      color: @primary-color;
     }
   }
 
@@ -42,27 +40,22 @@
         width: 100%;
         font-size: 28px;
         font-weight: normal;
-        margin: 0 .5rem;
+        padding: 0 1rem;
+        color: @secondary-color;
 
-      }
+        &.open{
+          color: red;
+        }
 
-      .slash {
-        color: @color-grey;
+        &.active {
+          color: @primary-color;
+        }
+
+        &:not(:last-child) {
+          border-right: 1px solid rgba(0, 0, 0, 0.1);
+        }
       }
     }
   }
 }
 
-.card-statistic:last-child {
-  margin-right: 1rem;
-}
-
-.card-users {
-  .icon {
-    color: @color-primary;
-  }
-
-  .active {
-    color: @color-primary;
-  }
-}

@@ -8,7 +8,7 @@ import {Link} from "react-router-dom";
 const Item = Menu.Item;
 const confirm = Modal.confirm;
 
-export const Navbar = ({setStateSidebar}: any) => {
+export const Navbar = ({stateSidebar, setStateSidebar}: any) => {
     const [state, dispatch] = useStore();
     const {user} = state;
 
@@ -26,7 +26,7 @@ export const Navbar = ({setStateSidebar}: any) => {
 
     return (
         <Menu mode="horizontal" className="navbar">
-            <Item className="button-menu" onClick={() => setStateSidebar(true)}>
+            <Item className="button-menu" onClick={() => setStateSidebar(!stateSidebar)}>
                 <Icon type="bars"/>
             </Item>
             <Item className="mr-auto">

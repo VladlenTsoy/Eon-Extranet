@@ -1,29 +1,33 @@
-@bsc-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
-
-.card-chart-statistic{
+.card-chart-statistic {
   margin-bottom: 1rem;
-  margin-right: 1rem;
   border: 0;
   border-radius: 10px;
-  overflow: hidden;
+  overflow: visible;
   box-shadow: @bsc-box-shadow;
   position: relative;
+  background: @primary-color;
 
   .ant-card-body {
-    padding: 0;
     height: 200px;
-  }
+    padding: 4rem 0 0;
+    overflow: hidden;
 
-  .chart-line{
-    position: relative;
-    z-index: -1;
-  }
+    .chart-line {
+      position: relative;
+      z-index: -1;
+    }
 
-  .chart-title-block{
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    z-index: 1;
-    pointer-events: none;
+    svg:not(:root) {
+      overflow: visible;
+    }
+
+    .chart-title-block {
+      color: #ffffff;
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      z-index: 1;
+      pointer-events: none;
+    }
   }
 }

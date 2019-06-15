@@ -2,19 +2,25 @@ import React from "react";
 import './Sidebar.less';
 import LogoEon from "../../../../assets/images/logo.svg";
 import {Link} from "react-router-dom";
-import {Menu, Icon, Drawer} from 'antd';
+import {Menu, Icon, Layout} from 'antd';
+
+const {Sider} = Layout;
 
 const Item = Menu.Item;
 const SubMenu = Menu.SubMenu;
 
 export const Sidebar = ({stateSidebar, setStateSidebar}: any) => {
-    return <Drawer
+    return <Sider
+        theme="light"
         className="sidebar"
-        title={<img src={LogoEon} className="top-logo" alt="Eon"/>}
-        placement="left"
-        onClose={() => setStateSidebar(false)}
-        visible={stateSidebar}>
-        <Menu theme="dark" mode="inline">
+        onCollapse={() => setStateSidebar(!stateSidebar)}
+        collapsed={stateSidebar}>
+        <Menu mode="inline">
+            <div className="wrapper-logo">
+                <div className="logo">
+                    <img src={LogoEon} className="top-logo" alt="Eon"/>
+                </div>
+            </div>
             <Item>
                 <Link to="/">
                     <Icon type="home"/>
@@ -117,5 +123,5 @@ export const Sidebar = ({stateSidebar, setStateSidebar}: any) => {
                 </Item>
             </SubMenu>
         </Menu>
-    </Drawer>
+    </Sider>
 };

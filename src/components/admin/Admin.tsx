@@ -31,76 +31,79 @@ import {EditorCenterForm} from "./centers/editor/Editor";
 import {Groups} from "./groups/Groups";
 import {Prices} from "./settings/prices/Prices";
 import {EditorPriceForm} from "./settings/prices/editor/Editor";
+import {DirectorForm} from "./users/director/Director";
 
 const {Content} = Layout;
 
 export const Admin = () => {
-    let [stateSidebar, setStateSidebar] = useState(false);
+    let [stateSidebar, setStateSidebar] = useState(true);
     return <Router>
         <Layout className="layout">
             <Sidebar stateSidebar={stateSidebar} setStateSidebar={setStateSidebar}/>
-            <Navbar stateSidebar={stateSidebar} setStateSidebar={setStateSidebar}/>
-            <Content className="admin-content">
-                <Switch>
-                    <Route exact path="/" component={Home}/>
-                    // Центры
-                    <Route exact path="/centers" component={Centers}/>
-                    <Route exact path="/center/create" component={EditorCenterForm}/>
-                    <Route exact path="/center/:id" component={EditorCenterForm}/>
-                    // Франшизы
-                    <Route exact path="/franchises" component={Franchises}/>
-                    <Route exact path="/franchise/create" component={EditorFranchiseForm}/>
-                    <Route exact path="/franchise/:id/edit" component={EditorFranchiseForm}/>
-                    <Route exact path="/franchise/:id/more" component={EditorFranchiseForm}/>
-                    <Route exact path="/franchise/:franchiseId/centers" component={Centers}/>
-                    // Города
-                    <Route exact path="/cities" component={Cities}/>
-                    <Route exact path="/city/create" component={EditorCityForm}/>
-                    <Route exact path="/city/:id" component={EditorCityForm}/>
-                    // Дисциплины
-                    <Route exact path="/disciplines" component={Disciplines}/>
-                    // Группы
-                    <Route exact path="/groups" component={Groups}/>
-                    // Пользователи
-                    <Route exact path="/users" component={Users}/>
-                    <Route exact path="/users/user/0/:id/:key" component={PupilForm}/>
-                    <Route exact path="/users/user/1/:id:key?" component={PupilForm}/>
-                    <Route exact path="/users/user/2/:id:key" component={PupilForm}/>
-                    <Route exact path="/users/user/3/:id:key" component={PupilForm}/>
-                    <Route exact path="/users/user/4/:id:key" component={PupilForm}/>
-                    // Категории
-                    <Route exact path="/categories" component={Categories}/>
-                    <Route exact path="/category/create" component={EditorCategoryForm}/>
-                    <Route exact path="/category/:id" component={EditorCategoryForm}/>
-                    // Заявки на пробный урок
-                    <Route exact path="/applications" component={Applications}/>
-                    <Route path="/application/create" component={EditorApplicationForm}/>
-                    <Route path="/application/:id" component={EditorApplicationForm}/>
-                    // Цены
-                    <Route exact path="/prices" component={Prices}/>
-                    <Route path="/price/create" component={EditorPriceForm}/>
-                    <Route path="/price/:id" component={EditorPriceForm}/>
-                    // Цифра-Картинка
-                    <Route exact path="/tasks/digital-picture" component={DigitalPicture}/>
-                    <Route path="/tasks/digital-picture/create" component={EditorDigitalPictureForm}/>
-                    <Route path="/tasks/digital-picture/:id" component={EditorDigitalPictureForm}/>
-                    // Страны
-                    <Route exact path="/tasks/countries" component={Countries}/>
-                    <Route path="/tasks/country/create" component={EditorCountryForm}/>
-                    <Route path="/tasks/country/:id" component={EditorCountryForm}/>
-                    // Персоны
-                    <Route exact path="/tasks/personalities" component={Personalities}/>
-                    <Route path="/tasks/personality/create" component={EditorPersonalityForm}/>
-                    <Route path="/tasks/personality/:id" component={EditorPersonalityForm}/>
-                    // Слова
-                    <Route exact path="/tasks/words" component={Words}/>
-                    <Route path="/tasks/word/create" component={EditorWordForm}/>
-                    <Route path="/tasks/word/:id" component={EditorWordForm}/>
-                    // Главная система
-                    <Route exact path="/tasks/word-numbers" component={WordNumbers}/>
-                    <Route path="/tasks/word-number/create" component={EditorWordNumberForm}/>
-                    <Route path="/tasks/word-number/:id" component={EditorWordNumberForm}/>
-                </Switch>
+            <Content>
+                <Navbar stateSidebar={stateSidebar} setStateSidebar={setStateSidebar}/>
+                <div className="admin-content">
+                    <Switch>
+                        <Route exact path="/" component={Home}/>
+                        // Центры
+                        <Route exact path="/centers" component={Centers}/>
+                        <Route exact path="/center/create" component={EditorCenterForm}/>
+                        <Route exact path="/center/:id" component={EditorCenterForm}/>
+                        // Франшизы
+                        <Route exact path="/franchises" component={Franchises}/>
+                        <Route exact path="/franchise/create" component={EditorFranchiseForm}/>
+                        <Route exact path="/franchise/:id/edit" component={EditorFranchiseForm}/>
+                        <Route exact path="/franchise/:id/more" component={EditorFranchiseForm}/>
+                        <Route exact path="/franchise/:franchiseId/centers" component={Centers}/>
+                        // Города
+                        <Route exact path="/cities" component={Cities}/>
+                        <Route exact path="/city/create" component={EditorCityForm}/>
+                        <Route exact path="/city/:id" component={EditorCityForm}/>
+                        // Дисциплины
+                        <Route exact path="/disciplines" component={Disciplines}/>
+                        // Группы
+                        <Route exact path="/groups" component={Groups}/>
+                        // Пользователи
+                        <Route exact path="/users" component={Users}/>
+                        <Route exact path="/users/user/0/:id/:key" component={PupilForm}/>
+                        <Route exact path="/users/user/1/:id:key?" component={PupilForm}/>
+                        <Route exact path="/users/user/2/:id:key" component={PupilForm}/>
+                        <Route exact path="/users/user/3/:id:key" component={DirectorForm}/>
+                        <Route exact path="/users/user/4/:id:key" component={PupilForm}/>
+                        // Категории
+                        <Route exact path="/categories" component={Categories}/>
+                        <Route exact path="/category/create" component={EditorCategoryForm}/>
+                        <Route exact path="/category/:id" component={EditorCategoryForm}/>
+                        // Заявки на пробный урок
+                        <Route exact path="/applications" component={Applications}/>
+                        <Route path="/application/create" component={EditorApplicationForm}/>
+                        <Route path="/application/:id" component={EditorApplicationForm}/>
+                        // Цены
+                        <Route exact path="/prices" component={Prices}/>
+                        <Route path="/price/create" component={EditorPriceForm}/>
+                        <Route path="/price/:id" component={EditorPriceForm}/>
+                        // Цифра-Картинка
+                        <Route exact path="/tasks/digital-picture" component={DigitalPicture}/>
+                        <Route path="/tasks/digital-picture/create" component={EditorDigitalPictureForm}/>
+                        <Route path="/tasks/digital-picture/:id" component={EditorDigitalPictureForm}/>
+                        // Страны
+                        <Route exact path="/tasks/countries" component={Countries}/>
+                        <Route path="/tasks/country/create" component={EditorCountryForm}/>
+                        <Route path="/tasks/country/:id" component={EditorCountryForm}/>
+                        // Персоны
+                        <Route exact path="/tasks/personalities" component={Personalities}/>
+                        <Route path="/tasks/personality/create" component={EditorPersonalityForm}/>
+                        <Route path="/tasks/personality/:id" component={EditorPersonalityForm}/>
+                        // Слова
+                        <Route exact path="/tasks/words" component={Words}/>
+                        <Route path="/tasks/word/create" component={EditorWordForm}/>
+                        <Route path="/tasks/word/:id" component={EditorWordForm}/>
+                        // Главная система
+                        <Route exact path="/tasks/word-numbers" component={WordNumbers}/>
+                        <Route path="/tasks/word-number/create" component={EditorWordNumberForm}/>
+                        <Route path="/tasks/word-number/:id" component={EditorWordNumberForm}/>
+                    </Switch>
+                </div>
             </Content>
         </Layout>
     </Router>
