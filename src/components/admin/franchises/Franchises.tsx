@@ -1,28 +1,64 @@
-import React from "react";
+import React, {useState} from "react";
 import {Link} from "react-router-dom";
-import {Button, Card, Icon, Typography, Menu, Dropdown, Tooltip} from "antd";
+import {Button, Card, Icon, Typography, Menu, Dropdown, Tooltip, Modal} from "antd";
 import {TableComponent} from "../layouts/table/Table";
 import defaultImage from '../../../assets/images/default-thumbnail.jpg';
+import {useStore} from "../../../store/useStore";
 
 const {Title, Text} = Typography;
-
-const menu = (text: any, record: any) => (<Menu>
-    <Menu.Item>
-        <Link to={`franchise/${record.id}/centers`}><Icon type="info-circle"/> Подробнее</Link>
-    </Menu.Item>
-    {/*<Menu.Item>*/}
-    {/*    <Link to={`franchise/${record.id}/more`}><Icon type="info-circle"/> Подробнее</Link>*/}
-    {/*</Menu.Item>*/}
-    <Menu.Item>
-        <Link to={`franchise/${record.id}/edit`}><Icon type="edit"/> Изменить</Link>
-    </Menu.Item>
-</Menu>);
+const {confirm} = Modal;
 
 export const Franchises = () => {
+    const [state] = useStore();
+    const [loader, setLoader] = useState(false);
+
+    const blockFranchise = (franchise: any) => {
+        confirm({
+            title: 'Вы действительно хотите заблокировать франшизу?',
+            async onOk() {
+                await state.api.user_access.post(`franchise/${franchise.id}/block`);
+                setLoader(true);
+            },
+        })
+    };
+
+    const unblockFranchise = (franchise: any) => {
+        confirm({
+            title: 'Вы действительно хотите разблокировать франшизу?',
+            async onOk() {
+                await state.api.user_access.post(`franchise/${franchise.id}/unblock`);
+                setLoader(true);
+            },
+        })
+    };
+
+    const menu = (text: any, record: any) => (<Menu>
+        <Menu.Item>
+            <Icon type="info-circle"/>
+            <Link className="link-text" to={`franchise/${record.id}/centers`}>Подробнее</Link>
+        </Menu.Item>
+        {record.status ? <Menu.Item onClick={() => blockFranchise(record)}>
+            <Icon type="lock"/>
+            <span className="link-text">Заблокировать</span>
+        </Menu.Item>: <Menu.Item onClick={() => unblockFranchise(record)}>
+            <Icon type="unlock"/>
+            <span className="link-text">Разблокировать</span>
+        </Menu.Item>}
+        {/*<Menu.Item>*/}
+        {/*    <Link to={`franchise/${record.id}/more`}><Icon type="info-circle"/> Подробнее</Link>*/}
+        {/*</Menu.Item>*/}
+        <Menu.Item>
+            <Icon type="edit"/>
+            <Link className="link-text" to={`franchise/${record.id}/edit`}> Изменить</Link>
+        </Menu.Item>
+    </Menu>);
+
     const columns = [{
         title: 'ID',
         dataIndex: 'id',
         defaultSortOrder: 'descend',
+        render: (text: any, record: any) => record.status ? text :
+            <Text type="danger">{text} <Icon type="lock"/></Text>,
         sorter: true,
     }, {
         title: 'Название',
@@ -88,7 +124,7 @@ export const Franchises = () => {
                     <Button icon="plus" htmlType="button" type="primary">Создать</Button>
                 </Link>
             </div>
-            <TableComponent columns={columns} url="franchises"/>
+            <TableComponent columns={columns} url="franchises" loader={loader} setLoader={setLoader}/>
         </Card>
     </div>;
 };
