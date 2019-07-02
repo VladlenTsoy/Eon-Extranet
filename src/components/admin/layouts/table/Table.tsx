@@ -21,10 +21,13 @@ export const TableComponent = ({columns, url, access = 'user_access', loader, se
         fetch({})
     }, []);
 
-    if (loader) {
-        fetch({});
-        setLoader(false);
-    }
+    useEffect(() => {
+
+        if (loader) {
+            setLoading(true);
+            fetch({}).then(() => setLoader(false));
+        }
+    }, [loader]);
 
     const handleTableChange = (_pagination: { pageIndex?: number; pageSize: any; total?: number; current?: any; }, filters: any, sorter: { field?: any; order?: any; }, data: {}, search?: any) => {
         pagination.pageIndex = _pagination.current;
