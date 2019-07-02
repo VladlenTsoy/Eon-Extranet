@@ -133,10 +133,11 @@ export const Centers = ({match}: any) => {
     return <Card className="_card">
         <div className="_card-title">
             <Title level={3} className="title">Центры</Title>
-            <Link className="link" to="/center/create">
+            <Link className="link" to={`/franchise/${id}/center/create`}>
                 <Button icon="plus" htmlType="button" type="primary">Создать</Button>
             </Link>
         </div>
-        <TableComponent columns={columns} url={id ? `centers/franchise/${id}` : `centers`} loader={loader} setLoader={setLoader}/>
+        <TableComponent columns={columns} url={id ? `centers/franchise/${id}` : `centers`} loader={loader}
+                        setLoader={setLoader}/>
     </Card>;
 };

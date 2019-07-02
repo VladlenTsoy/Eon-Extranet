@@ -17,7 +17,7 @@ const EditorCenter = ({match, form}: any) => {
     const [position, setPosition]: any = useState(false);
     const [mapPosition, setMapPosition]: any = useState({lat: 41.29242, lng: 69.27517});
     const [loading, setLoading] = useState(true);
-    const id = match.params.id;
+    const {id, franchiseId} = match.params;
 
     const clickMap = (e: any) => {
         setPosition({lat: e.latLng.lat(), lng: e.latLng.lng()});
@@ -46,6 +46,11 @@ const EditorCenter = ({match, form}: any) => {
             });
             setPosition(response.data.position);
             setMapPosition(response.data.position);
+        } else {
+            console.log(franchiseId === 7, franchiseId);
+            form.setFieldsValue({
+                franchise_id: Number(franchiseId),
+            });
         }
         setLoading(false);
     };
@@ -55,7 +60,8 @@ const EditorCenter = ({match, form}: any) => {
         fetchData()
     }, []);
 
-    return <Editor title="Центр" linkToSave={'center'} reference={'centers'} loading={loading} id={id} form={form} span={24}>
+    return <Editor title="Центр" linkToSave={'center'} reference={'centers'} loading={loading} id={id} form={form}
+                   span={24}>
         <Row type="flex" justify="center" className="form-row">
             <Col span={8}>
                 <Form.Item label="Название">

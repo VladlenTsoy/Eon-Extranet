@@ -49,10 +49,10 @@ export const Admin = () => {
                         <Route exact path="/franchise/create" component={EditorFranchiseForm}/>
                         <Route exact path="/franchise/:id/edit" component={EditorFranchiseForm}/>
                         <Route exact path="/franchise/:id/more" component={EditorFranchiseForm}/>
-                        <Route exact path="/franchise/:franchiseId/centers" component={Centers}/>
                         // Центры
-                        <Route exact path="/center/create" component={EditorCenterForm}/>
-                        <Route exact path="/center/:id" component={EditorCenterForm}/>
+                        <Route exact path="/franchise/:franchiseId/centers" component={Centers}/>
+                        <Route exact path="/franchise/:franchiseId/center/create" component={EditorCenterForm}/>
+                        <Route exact path="/franchise/:franchiseId/center/:id" component={EditorCenterForm}/>
                         // Города
                         <Route exact path="/cities" component={Cities}/>
                         <Route exact path="/city/create" component={EditorCityForm}/>
