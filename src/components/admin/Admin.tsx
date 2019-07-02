@@ -28,7 +28,6 @@ import {EditorCategoryForm} from "./settings/categories/editor/Editor";
 import {Franchises} from "./franchises/Franchises";
 import {EditorFranchiseForm} from "./franchises/editor/Editor";
 import {EditorCenterForm} from "./centers/editor/Editor";
-import {Groups} from "./groups/Groups";
 import {Prices} from "./settings/prices/Prices";
 import {EditorPriceForm} from "./settings/prices/editor/Editor";
 import {DirectorForm} from "./users/director/Director";
@@ -45,24 +44,21 @@ export const Admin = () => {
                 <div className="admin-content">
                     <Switch>
                         <Route exact path="/" component={Home}/>
-                        // Центры
-                        <Route exact path="/centers" component={Centers}/>
-                        <Route exact path="/center/create" component={EditorCenterForm}/>
-                        <Route exact path="/center/:id" component={EditorCenterForm}/>
                         // Франшизы
                         <Route exact path="/franchises" component={Franchises}/>
                         <Route exact path="/franchise/create" component={EditorFranchiseForm}/>
                         <Route exact path="/franchise/:id/edit" component={EditorFranchiseForm}/>
                         <Route exact path="/franchise/:id/more" component={EditorFranchiseForm}/>
                         <Route exact path="/franchise/:franchiseId/centers" component={Centers}/>
+                        // Центры
+                        <Route exact path="/center/create" component={EditorCenterForm}/>
+                        <Route exact path="/center/:id" component={EditorCenterForm}/>
                         // Города
                         <Route exact path="/cities" component={Cities}/>
                         <Route exact path="/city/create" component={EditorCityForm}/>
                         <Route exact path="/city/:id" component={EditorCityForm}/>
                         // Дисциплины
                         <Route exact path="/disciplines" component={Disciplines}/>
-                        // Группы
-                        <Route exact path="/groups" component={Groups}/>
                         // Пользователи
                         <Route exact path="/users" component={Users}/>
                         <Route exact path="/users/user/0/:id/:key" component={PupilForm}/>

@@ -34,18 +34,6 @@ export const Sidebar = ({stateSidebar, setStateSidebar}: any) => {
                 </Link>
             </Item>
             <Item>
-                <Link to="/centers">
-                    <Icon type="bank"/>
-                    <span>Центры</span>
-                </Link>
-            </Item>
-            <Item>
-                <Link to="/groups">
-                    <Icon type="team"/>
-                    <span>Группы</span>
-                </Link>
-            </Item>
-            <Item>
                 <Link to="/users">
                     <Icon type="user"/>
                     <span>Пользователи</span>
