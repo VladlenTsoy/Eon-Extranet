@@ -5,26 +5,25 @@ import {Card} from "antd";
 import {ChartLine} from "../../../layouts/settings/chart/line/Line";
 
 export const StatisticStudent = () => {
-    let [state] = useStore();
-    let [selectStudent, setSelectStudent]: any = useState({x: 0, y: 0});
-    let [data, setData]: any = useState(null);
+    const [state] = useStore();
+    const [selectStudent, setSelectStudent]: any = useState({x: 0, y: 0});
+    const [data, setData]: any = useState(null);
 
-    let mouseEnter = (point: any) => {
-        let set = {x: point.data.x, y: point.data.y};
+    const mouseEnter = (point: any) => {
+        const set = {x: point.data.x, y: point.data.y};
         if (set.x !== selectStudent.x)
             setSelectStudent(set);
     };
 
     // Вывод данных для статистики
-    let fetchData = () => {
-        state.api.user_access.get('statistic/students')
-            .then((response: any) => {
-                setData(response.data);
-                setSelectStudent(response.data[0].data[response.data[0].data.length-1]);
-            });
-    };
-
-    useEffect(() => fetchData(), []);
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await state.api.user_access.get('statistic/students');
+            setData(response.data);
+            setSelectStudent(response.data[0].data[response.data[0].data.length - 1]);
+        };
+        fetchData();
+    }, [state.api]);
 
     return <div>
         <Card className="card-chart-statistic">
@@ -34,8 +33,9 @@ export const StatisticStudent = () => {
             </div>
             {
                 data ?
-                    <ChartLine className="chart-line" data={data} mouseEnter={mouseEnter}/> :
-                    <div/>
+                    <ChartLine className="chart-line" data={data} mouseEnter={mouseEnter}
+                               linesColor={['#FF5370', '#FF5370']}/> :
+                    null
             }
         </Card>
     </div>;

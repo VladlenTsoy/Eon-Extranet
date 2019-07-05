@@ -3,18 +3,20 @@ import './Home.less';
 import {Card, Col, Row, Icon} from "antd";
 import {useStore} from "../../../store/useStore";
 import {StatisticStudent} from "./blocks/students/Students";
+import StudentInNumbers from "./blocks/student-in-numbers/StudentInNumbers";
 
 export const Home = () => {
-    let [state] = useStore();
-    let [statistic, setStatistic]: any = useState(false);
+    const [state] = useStore();
+    const [statistic, setStatistic]: any = useState(false);
 
-    // Вывод данных для статистики
-    let fetchStatistic = () => {
-        state.api.user_access.get('statistic')
-            .then((response: any) => setStatistic(response.data))
-    };
+    useEffect(() => {
+        const fetchStatistic = async () => {
+            const response = await state.api.user_access.get('statistic');
+            setStatistic(response.data)
+        };
 
-    useEffect(() => fetchStatistic(), []);
+        fetchStatistic()
+    }, [state.api]);
 
     return <div>
         <Row type="flex" gutter={15}>
@@ -42,6 +44,9 @@ export const Home = () => {
                         </div>
                     </div>
                 </Card>
+            </Col>
+            <Col lg={6} md={12}>
+                <StudentInNumbers/>
             </Col>
             <Col lg={6} md={12}>
                 <Card className="card-statistic" loading={!statistic}>

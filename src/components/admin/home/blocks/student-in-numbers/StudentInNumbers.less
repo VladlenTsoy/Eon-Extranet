@@ -1,0 +1,45 @@
+.student-in-numbers-block {
+  .card-title {
+    margin-bottom: 0.5rem;
+  }
+
+  .list {
+    width: 100%;
+
+    .item {
+      display: flex;
+      width: 100%;
+      padding: 0.5rem 0;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid #f1f1f1;
+      }
+
+      span {
+        display: inline-flex;
+      }
+
+      .item-title {
+        margin-right: auto;
+
+      }
+
+      .all {
+        color: @secondary-color;
+      }
+
+      .open {
+        color: @success-color;
+      }
+
+      .active {
+        color: @info-color;
+      }
+
+      .new {
+        color: @danger-color;
+      }
+
+    }
+  }
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import {ResponsiveLine} from '@nivo/line'
 
-export const ChartLine = ({data, mouseEnter}: any) => (
+export const ChartLine = ({data, mouseEnter, linesColor}: any) => (
     <ResponsiveLine
         data={data}
         xScale={{type: 'point'}}
@@ -28,6 +28,6 @@ export const ChartLine = ({data, mouseEnter}: any) => (
         enableGridY={false}
         areaOpacity={0.7}
         onMouseMove={mouseEnter}
-        colors={['#fff', '#FF5370']}
+        colors={linesColor}
     />
 );
