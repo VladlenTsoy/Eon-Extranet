@@ -15,31 +15,33 @@ export const Sidebar = ({stateSidebar, setStateSidebar}: any) => {
         className="sidebar"
         onCollapse={() => setStateSidebar(!stateSidebar)}
         collapsed={stateSidebar}>
-        <Menu mode="inline">
+        <Menu mode="inline"
+              defaultSelectedKeys={['home']}
+        >
             <div className="wrapper-logo">
                 <div className="logo">
                     <img src={LogoEon} className="top-logo" alt="Eon"/>
                 </div>
             </div>
-            <Item>
+            <Item key="home">
                 <Link to="/">
                     <Icon type="home"/>
                     <span>Главная</span>
                 </Link>
             </Item>
-            <Item>
+            <Item key="franchises">
                 <Link to="/franchises">
                     <Icon type="book"/>
                     <span>Франшизы</span>
                 </Link>
             </Item>
-            <Item>
+            <Item key="users">
                 <Link to="/users">
                     <Icon type="user"/>
                     <span>Пользователи</span>
                 </Link>
             </Item>
-            <Item>
+            <Item key="applications">
                 <Link to="/applications">
                     <Icon type="notification"/>
                     <span>Пробный урок</span>
@@ -52,25 +54,25 @@ export const Sidebar = ({stateSidebar, setStateSidebar}: any) => {
                 </Link>
             </Item>
             <SubMenu title={<span><Icon type="setting"/><span>Настройки</span></span>}>
-                <Item>
+                <Item key="cities">
                     <Link to="/cities">
                         <Icon type="pushpin"/>
                         <span>Города</span>
                     </Link>
                 </Item>
-                <Item>
+                <Item key="prices">
                     <Link to="/prices">
                         <Icon type="credit-card"/>
                         <span>Цены</span>
                     </Link>
                 </Item>
-                <Item>
+                <Item key="disciplines">
                     <Link to="/disciplines">
                         <Icon type="database"/>
                         <span>Дисциплины</span>
                     </Link>
                 </Item>
-                <Item>
+                <Item key="categories">
                     <Link to="/categories">
                         <Icon type="database"/>
                         <span>Категории</span>

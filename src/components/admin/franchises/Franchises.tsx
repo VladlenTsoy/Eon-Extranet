@@ -35,7 +35,7 @@ export const Franchises = () => {
     const menu = (text: any, record: any) => (<Menu>
         <Menu.Item>
             <Icon type="info-circle"/>
-            <Link className="link-text" to={`franchise/${record.id}/centers`}>Подробнее</Link>
+            <Link className="link-text" to={`franchises/${record.id}/centers`}>Подробнее</Link>
         </Menu.Item>
         {record.status ? <Menu.Item onClick={() => blockFranchise(record)}>
             <Icon type="lock"/>
@@ -49,7 +49,7 @@ export const Franchises = () => {
         {/*</Menu.Item>*/}
         <Menu.Item>
             <Icon type="edit"/>
-            <Link className="link-text" to={`franchise/${record.id}/edit`}> Изменить</Link>
+            <Link className="link-text" to={`franchises/${record.id}/edit`}> Изменить</Link>
         </Menu.Item>
     </Menu>);
 
@@ -120,7 +120,7 @@ export const Franchises = () => {
         <Card className="_card">
             <div className="_card-title">
                 <Title level={3} className="title">Франшизы</Title>
-                <Link className="link" to="/franchise/create">
+                <Link className="link" to="/franchises/create">
                     <Button icon="plus" htmlType="button" type="primary">Создать</Button>
                 </Link>
             </div>

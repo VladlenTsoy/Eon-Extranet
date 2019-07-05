@@ -31,6 +31,7 @@ import {EditorCenterForm} from "./centers/editor/Editor";
 import {Prices} from "./settings/prices/Prices";
 import {EditorPriceForm} from "./settings/prices/editor/Editor";
 import {DirectorForm} from "./users/director/Director";
+import {BreadcrumbBlock} from "./layouts/breadcrumb/Breadcrumb";
 
 const {Content} = Layout;
 
@@ -42,17 +43,18 @@ export const Admin = () => {
             <Content>
                 <Navbar stateSidebar={stateSidebar} setStateSidebar={setStateSidebar}/>
                 <div className="admin-content">
+                    <BreadcrumbBlock/>
                     <Switch>
                         <Route exact path="/" component={Home}/>
                         // Франшизы
                         <Route exact path="/franchises" component={Franchises}/>
-                        <Route exact path="/franchise/create" component={EditorFranchiseForm}/>
-                        <Route exact path="/franchise/:id/edit" component={EditorFranchiseForm}/>
-                        <Route exact path="/franchise/:id/more" component={EditorFranchiseForm}/>
+                        <Route exact path="/franchises/create" component={EditorFranchiseForm}/>
+                        <Route exact path="/franchises/:id/edit" component={EditorFranchiseForm}/>
+                        <Route exact path="/franchises/:id/more" component={EditorFranchiseForm}/>
                         // Центры
-                        <Route exact path="/franchise/:franchiseId/centers" component={Centers}/>
-                        <Route exact path="/franchise/:franchiseId/center/create" component={EditorCenterForm}/>
-                        <Route exact path="/franchise/:franchiseId/center/:id" component={EditorCenterForm}/>
+                        <Route exact path="/franchises/:franchiseId/centers" component={Centers}/>
+                        <Route exact path="/franchises/:franchiseId/centers/create" component={EditorCenterForm}/>
+                        <Route exact path="/franchises/:franchiseId/centers/:id" component={EditorCenterForm}/>
                         // Города
                         <Route exact path="/cities" component={Cities}/>
                         <Route exact path="/city/create" component={EditorCityForm}/>
