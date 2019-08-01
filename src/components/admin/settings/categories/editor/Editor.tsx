@@ -35,23 +35,21 @@ const EditorCategory = ({form, history, match}: any) => {
     };
 
     const fetchDisciplines = () => state.api.guest('disciplines');
-    const fetchCenters = () => state.api.user_access('centers');
-
-    const fetchData = async () => {
-        let _disciplines = await fetchDisciplines();
-        setDisciplines(_disciplines.data);
-
-        let _centers = await fetchCenters();
-        setCenters(_centers.data.data);
-
-        if (id)
-            await selectById(id);
-        setLoading(false);
-    };
+    const fetchCenters = () => state.api.user_access('centers/all');
 
     useEffect(() => {
         setLoading(true);
-        fetchData();
+        (async () => {
+            let _disciplines = await fetchDisciplines();
+            setDisciplines(_disciplines.data);
+
+            let _centers = await fetchCenters();
+            setCenters(_centers.data);
+
+            if (id)
+                await selectById(id);
+            setLoading(false);
+        })();
     }, []);
 
     const filterOption = (input: string, option: any) => {

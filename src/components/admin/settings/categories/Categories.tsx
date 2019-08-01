@@ -57,7 +57,7 @@ export const Categories = () => {
     return <div>
         <Card className="_card">
             <div className="_card-title">
-                <Title level={3} className="title">Города</Title>
+                <Title level={3} className="title">Категории</Title>
                 <Link className="link" to="/category/create">
                     <Button icon="plus" htmlType="button" type="primary">Создать</Button>
                 </Link>
