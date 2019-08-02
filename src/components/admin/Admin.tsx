@@ -32,6 +32,8 @@ import {Prices} from "./settings/prices/Prices";
 import {EditorPriceForm} from "./settings/prices/editor/Editor";
 import {DirectorForm} from "./users/director/Director";
 import {BreadcrumbBlock} from "./layouts/breadcrumb/Breadcrumb";
+import Center from "./center/Center";
+import Teacher from "./teacher/teacher";
 
 const {Content} = Layout;
 
@@ -55,6 +57,10 @@ export const Admin = () => {
                         <Route exact path="/franchises/:franchiseId/centers" component={Centers}/>
                         <Route exact path="/franchises/:franchiseId/centers/create" component={EditorCenterForm}/>
                         <Route exact path="/franchises/:franchiseId/centers/:id" component={EditorCenterForm}/>
+                        // Центр
+                        <Route exact path="/franchises/:franchiseId/center/:id" component={Center}/>
+                        //
+                        <Route exact path="/franchises/:franchiseId/center/:centerId/users/:id" component={Teacher}/>
                         // Города
                         <Route exact path="/cities" component={Cities}/>
                         <Route exact path="/city/create" component={EditorCityForm}/>

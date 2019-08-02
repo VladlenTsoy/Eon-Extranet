@@ -22,10 +22,17 @@ const App = () => {
 
     // Вывод данных текущего прользователя
     let fetchCurrentUserData = async () => {
-        await state.api.user_general.get('')
-            .then((response: any) => dispatch({type: FETCH_CURRENT_USER_DATA, payload: response.data}))
-            .catch((error: any) => error)
-            .finally(() => setLoader(false));
+        try {
+            let response = await state.api.user_general.get('');
+            console.log(response.data);
+            if (response.data.access === 'student' || response.data.access === 'teacher')
+                alert(1);
+            else
+                dispatch({type: FETCH_CURRENT_USER_DATA, payload: response.data})
+        } catch (e) {
+            console.log(e);
+        }
+        setLoader(false);
     };
 
     const fetchLanguages = async () => {

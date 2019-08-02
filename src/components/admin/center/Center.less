@@ -1,0 +1,101 @@
+.header-center.ant-page-header {
+  padding: 0;
+  margin-bottom: 0.5rem;
+
+  .ant-page-header-heading-extra {
+    top: 0;
+    right: 0;
+  }
+
+  .info-center {
+    display: flex;
+    align-items: center;
+
+    .info-center-logo {
+      width: 200px;
+      margin-right: 1rem;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .info-center-content {
+      flex: 1;
+      padding-top: 1rem;
+    }
+
+    .info-center-extra {
+      min-width: 240px;
+      text-align: right;
+      white-space: nowrap;
+      padding-top: 1rem;
+
+      .mb {
+        .ant-statistic {
+          margin-bottom: 1rem;
+        }
+      }
+
+      .success{
+        color: @success-color;
+      }
+      .danger{
+        color: @danger-color;
+      }
+
+      .cost{
+        margin-bottom: 0;
+        color: @secondary-color;
+      }
+
+      .active{
+
+      }
+
+      .primary{
+        color: @primary-color;
+      }
+    }
+  }
+}
+
+.info-center-tabs{
+  .ant-tabs-bar{
+    //margin-bottom: 0;
+  }
+
+  .ant-table-small{
+    border: 0;
+
+    .ant-table-body{
+      margin: 0;
+    }
+  }
+}
+
+.description {
+  display: table;
+}
+
+.description .term {
+  display: table-cell;
+  margin-right: 8px;
+  padding-bottom: 8px;
+  white-space: nowrap;
+  line-height: 20px;
+}
+
+.description .term:after {
+  position: relative;
+  top: -0.5px;
+  margin: 0 8px 0 2px;
+  content: ":";
+}
+
+.description .detail {
+  display: table-cell;
+  padding-bottom: 8px;
+  width: 100%;
+  line-height: 20px;
+}
