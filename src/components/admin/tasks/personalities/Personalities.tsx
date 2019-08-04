@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {TableComponent} from "../../layouts/table/Table";
+import {TableComponent} from "../../../layouts/table/Table";
 import {Link} from "react-router-dom";
 import {Button, Card, Icon, Modal, Typography} from "antd";
 import {useStore} from "../../../../store/useStore";

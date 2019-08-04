@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button, Card, Icon} from "antd";
-import {TableComponent} from "../layouts/table/Table";
+import {TableComponent} from "../../layouts/table/Table";
 import {Link} from "react-router-dom";
 import defaultImage from "../../../assets/images/default-thumbnail.jpg";
 

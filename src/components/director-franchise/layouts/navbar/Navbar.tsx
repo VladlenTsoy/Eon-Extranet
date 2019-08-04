@@ -1,7 +1,7 @@
 import React from 'react';
 import './Navbar.less';
 import {Link} from "react-router-dom";
-import {Menu, Icon} from "antd";
+import {Icon, Menu} from "antd";
 
 const Item = Menu.Item;
 

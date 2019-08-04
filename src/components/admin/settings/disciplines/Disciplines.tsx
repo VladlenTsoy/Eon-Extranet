@@ -1,6 +1,6 @@
 import React from "react";
 import {Card, Typography} from "antd";
-import {TableComponent} from "../../layouts/table/Table";
+import {TableComponent} from "../../../layouts/table/Table";
 
 const {Title} = Typography;
 

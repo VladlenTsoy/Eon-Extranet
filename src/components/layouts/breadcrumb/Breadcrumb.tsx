@@ -2,7 +2,7 @@ import React from 'react';
 import './Breadcrumb.less';
 import {Icon, Breadcrumb} from "antd";
 import {Link, withRouter} from 'react-router-dom';
-import {useStore} from "../../../../store/useStore";
+import {useStore} from "../../../store/useStore";
 
 const breadcrumbNameMap: any = {
     '/franchises': 'Франшизы',

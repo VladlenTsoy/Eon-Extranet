@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Form, InputNumber, Button, Skeleton, Row, Col, Card, Typography} from "antd";
-import {UploadInput} from "../../../layouts/upload/Upload";
+import {UploadInput} from "../../../../layouts/upload/Upload";
 import {withRouter} from "react-router";
 import {useStore} from "../../../../../store/useStore";
 

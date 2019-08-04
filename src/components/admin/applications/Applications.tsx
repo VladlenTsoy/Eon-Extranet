@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import './Applications.less';
-import {TableComponent} from "../layouts/table/Table";
+import {TableComponent} from "../../layouts/table/Table";
 import {Link} from "react-router-dom";
 import {Button, Card, Badge, Icon, Typography} from "antd";
 

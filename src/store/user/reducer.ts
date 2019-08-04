@@ -20,7 +20,7 @@ interface User {
     date_unblock: string | null,
     center_id: number | null,
     group_id: number | null,
-    access_id: number | null,
+    access: string,
     lang_id: number | null,
     coins: number,
 }

@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from "react";
 import {Table, Input, Form} from 'antd';
-import {useStore} from "../../../../store/useStore";
+import {useStore} from "../../../store/useStore";
 
 export const TableComponent = ({columns, url, access = 'user_access', loader, setLoader}: any) => {
     const [state] = useStore();

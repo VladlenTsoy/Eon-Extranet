@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import {Button, Card, Icon, Typography, Menu, Dropdown, Tooltip, Modal} from "antd";
-import {TableComponent} from "../layouts/table/Table";
+import {TableComponent} from "../../layouts/table/Table";
 import defaultImage from '../../../assets/images/default-thumbnail.jpg';
 import {useStore} from "../../../store/useStore";
 

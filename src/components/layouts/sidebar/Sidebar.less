@@ -1,0 +1,56 @@
+.sidebar {
+  .ant-menu {
+    border: 0;
+
+    .wrapper-logo {
+      width: 100%;
+      overflow: hidden;
+      padding: 0.5rem 1.5rem;
+      height: 46px;
+      box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      position: relative;
+      z-index: 5;
+      text-align: center;
+
+      .logo {
+        transition: all 0.2s ease-in-out;
+        height: 100%;
+        width: 100%;
+        img {
+          height: 100%;
+        }
+      }
+    }
+
+    &.ant-menu-inline-collapsed{
+      .logo {
+        width: 25px;
+        overflow: hidden;
+        margin: 0 auto;
+      }
+    }
+
+    .ant-menu-item, .ant-menu-submenu {
+      &.ant-menu-item-selected {
+        background: #ffffff;
+
+        &::after {
+          border: 0;
+        }
+      }
+
+      span {
+        font-size: 14px;
+      }
+
+      .anticon {
+        line-height: 20px;
+        min-width: 20px;
+        font-size: 20px;
+        margin-right: 1.1rem;
+        vertical-align: middle;
+      }
+    }
+  }
+}

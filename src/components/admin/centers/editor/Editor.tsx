@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
-import {Editor} from '../../layouts/editor/Editor';
+import {Editor} from '../../../layouts/editor/Editor';
 import {useStore} from "../../../../store/useStore";
 import {Col, Form, Input, Select, Row} from "antd";
-import {UploadInput} from "../../layouts/upload/Upload";
+import {UploadInput} from "../../../layouts/upload/Upload";
 import {Map} from "../../layouts/settings/map/Map";
 
 const {TextArea} = Input;

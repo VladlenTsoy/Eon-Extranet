@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {useStore} from "../../../../store/useStore";
+import {useStore} from "../../../store/useStore";
 import {Button, Card, Col, Form, Row, Skeleton, Typography} from "antd";
 import {withRouter} from "react-router";
 

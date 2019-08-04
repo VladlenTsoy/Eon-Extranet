@@ -7,6 +7,7 @@ import {Auth} from "./auth/Auth";
 import {Admin} from "./admin/Admin";
 import {FETCH_CURRENT_USER_DATA} from "../store/user/reducer";
 import {FETCH_LANGUAGES} from "../store/language/reducer";
+import DirectorFranchise from "./director-franchise/DirectorFranchise";
 
 const App = () => {
     let [loader, setLoader] = useState(true);
@@ -50,6 +51,11 @@ const App = () => {
         dataFetch();
     }, []);
 
+    const AccessLayouts = () =>
+        state.user.access === 'admin' ? <Admin/> :
+            state.user.access === 'director-franchise' ?
+                <DirectorFranchise/> : <Admin/>;
+
     return (
         <Router>
             <div className="default-theme-eon">
@@ -58,7 +64,8 @@ const App = () => {
                     <Icon type="loading" style={{fontSize: 24}} spin/>
                 </div>}
                 <Switch>
-                    <Route exact path="**" render={() => state.user.id ? <Admin/> :
+                    <Route exact path="**" render={() => state.user.id ?
+                        <AccessLayouts/> :
                         <Auth apiChangeAccessToken={apiChangeAccessToken}
                               fetchCurrentUserData={fetchCurrentUserData}/>}/>
                 </Switch>

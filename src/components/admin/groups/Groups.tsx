@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, Card, Icon, Typography} from 'antd';
 import {Link} from "react-router-dom";
-import {TableComponent} from "../layouts/table/Table";
+import {TableComponent} from "../../layouts/table/Table";
 
 const {Title} = Typography;
 
