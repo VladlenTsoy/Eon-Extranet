@@ -33,7 +33,7 @@ import {EditorPriceForm} from "./settings/prices/editor/Editor";
 import {DirectorForm} from "./users/director/Director";
 import {BreadcrumbBlock} from "./layouts/breadcrumb/Breadcrumb";
 import Center from "./center/Center";
-import Teacher from "./teacher/teacher";
+import Teacher from "./teacher/Teacher";
 
 const {Content} = Layout;
 
