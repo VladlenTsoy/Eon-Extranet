@@ -29,7 +29,7 @@ export const Auth = ({apiChangeAccessToken, fetchCurrentUserData}: any) => {
             </Content>
             <Footer className="footer">
                     <span className="footer-text">2018 © Eon. All rights reserved. Design and development by
-                        <a href="https://limitless.uz" target="_blank"> Limitless</a>.
+                        <a href="https://vladlen.uz" target="_blank"> Vladlen</a>.
                     </span>
                 <div className="footer-wrap-icon">
                     <a href="https://eon.uz" target="_blank">
