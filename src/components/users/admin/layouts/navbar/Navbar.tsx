@@ -7,7 +7,7 @@ const Item = Menu.Item;
 
 export const Navbar = () => {
     return [
-        <Item>
+        <Item key="applications">
             <Link to="/applications">
                 <Icon type="notification"/> Заявки
             </Link>

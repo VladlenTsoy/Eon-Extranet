@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import './App.less';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import {Icon} from "antd";
@@ -15,29 +15,26 @@ interface AppPropTypes {
 }
 
 const App: React.FC<AppPropTypes> = ({user, loader}) => {
-    const AccessLayouts = () =>
-        user.access === 'admin' ? <Admin/> :
-            user.access === 'director-franchise' ?
-                <DirectorFranchise/> : <Admin/>;
+    return <Router>
+        <div className="App">
+            {/* Loading */}
+            {!loader ||
+            <div className="loader">
+                <Icon type="loading" style={{fontSize: 24}} spin/>
+            </div>}
 
-    return (
-        <Router>
-            <div className="App">
-                {/* Loading */}
-                {!loader ||
-                <div className="loader">
-                    <Icon type="loading" style={{fontSize: 24}} spin/>
-                </div>}
-
-                {/* Pages */}
-                <Switch>
-                    <Route exact path="**" render={() => user.id ?
-                        <AccessLayouts/> :
-                        <Auth/>}/>
-                </Switch>
-            </div>
-        </Router>
-    );
+            {/* Pages */}
+            <Switch>
+                <Route exact path="**" render={
+                    () => !user.id ?
+                        <Auth/> :
+                        user.access === 'admin' ? <Admin/> :
+                            user.access === 'director-franchise' ?
+                                <DirectorFranchise/> : <div/>
+                }/>
+            </Switch>
+        </div>
+    </Router>
 };
 
 const AppState = () => {

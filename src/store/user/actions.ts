@@ -14,8 +14,7 @@ export const fetchCurrentUserData = () =>
             if (response.data.access === 'student' || response.data.access === 'teacher')
                 alert(1);
             else {
-                console.log(getState());
-                getState().api.user_general.defaults.baseURL = DOMAIN_API + '/user/' + response.data.access;
+                getState().api.user_access.defaults.baseURL = DOMAIN_API + '/user/' + response.data.access;
                 dispatch({type: FETCH_CURRENT_USER_DATA, payload: response.data});
             }
         } catch (e) {

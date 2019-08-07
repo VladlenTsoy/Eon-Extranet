@@ -10,7 +10,7 @@ const SubMenu = Menu.SubMenu;
 
 export const Sidebar = () => {
     return [
-        <div className="wrapper-logo">
+        <div className="wrapper-logo" key="logo">
             <div className="logo">
                 <img src={LogoEon} className="top-logo" alt="Eon"/>
             </div>
@@ -39,13 +39,19 @@ export const Sidebar = () => {
                 <span>Пробный урок</span>
             </Link>
         </Item>,
-        <Item disabled>
-            <Link to="/applications">
+        <Item key="shop" disabled>
+            <Link to="/shop">
                 <Icon type="shop"/>
                 <span>Магазин</span>
             </Link>
         </Item>,
-        <SubMenu title={<span><Icon type="setting"/><span>Настройки</span></span>}>
+        <SubMenu key="setting"
+                 title={
+                     <div>
+                         <Icon type="setting"/>
+                         <span>Настройки</span>
+                     </div>
+                 }>
             <Item key="cities">
                 <Link to="/cities">
                     <Icon type="pushpin"/>
@@ -71,7 +77,13 @@ export const Sidebar = () => {
                 </Link>
             </Item>
         </SubMenu>,
-        <SubMenu title={<span><Icon type="robot"/><span>Упражнения</span></span>}>
+        <SubMenu key="robot"
+                 title={
+                     <div>
+                         <Icon type="robot"/>
+                         <span>Упражнения</span>
+                     </div>
+                 }>
             <Item>
                 <Link to="/tasks/digital-picture">
                     <Icon type="database"/>
