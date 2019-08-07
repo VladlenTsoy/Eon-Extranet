@@ -12,7 +12,7 @@ import {Provider} from "react-redux";
 ReactDOM.render(<LocaleProvider locale={ruRU}>
     <StoreProvider>
         <Provider store={store}>
-        <App/>
+            <App/>
         </Provider>
     </StoreProvider>
 </LocaleProvider>, document.getElementById('root'));

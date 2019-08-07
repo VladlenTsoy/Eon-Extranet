@@ -10,16 +10,13 @@ module.exports = override(
         javascriptEnabled: true,
         modifyVars: {
             '@font-family': "'Museo Cyrl', sans-serif",
-            // '@primary-color': '#b13038',
-            // '@sub-color': '#489dbc',
-
             '@primary-color': '#4099ff',
             '@danger-color': '#FF5370',
             '@warning-color': '#FFB64D',
             '@success-color': '#2ed8b6',
             '@info-color': '#00bcd4',
             '@dark-color': '#37474f',
-            '@secondary-color': 'rgba(0, 0, 0, 0.4)',
+            '@text-color-secondary': 'rgba(0, 0, 0, 0.4)',
 
             '@bg-color': '#F2F7FB',
             // '@sidebar-color': '#263544',

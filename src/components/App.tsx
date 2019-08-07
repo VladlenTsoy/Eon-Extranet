@@ -1,52 +1,23 @@
 import React, {useEffect, useState} from 'react';
 import './App.less';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import {useStore} from "../store/useStore";
 import {Icon} from "antd";
 import {Auth} from "./auth/Auth";
 import {Admin} from "./users/admin/Admin";
-import {FETCH_CURRENT_USER_DATA} from "../store/user/_reducer";
 import DirectorFranchise from "./users/director-franchise/DirectorFranchise";
-import {DOMAIN_API} from "../store/api/_reducer";
+import {useDispatch, useSelector} from "react-redux";
+import {apiChangeAccessToken} from "../store/api/actions";
+import {fetchCurrentUserData} from "../store/user/actions";
 
-const App = () => {
-    let [loader, setLoader] = useState(true);
-    let [state, dispatch] = useStore();
+interface AppPropTypes {
+    user: any,
+    loader: boolean,
+}
 
-    // Изменения или Создание Api Токена
-    let apiChangeAccessToken = (token?: string): any => {
-        if (token)
-            localStorage.setItem('EON_API_TOKEN_ACCESS', token);
-        if (localStorage.getItem('EON_API_TOKEN_ACCESS') !== null)
-            state.api.guest.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('EON_API_TOKEN_ACCESS');
-    };
-
-    // Вывод данных текущего прользователя
-    let fetchCurrentUserData = async () => {
-        try {
-            let response = await state.api.user_general.get('');
-            if (response.data.access === 'student' || response.data.access === 'teacher')
-                alert(1);
-            else {
-                dispatch({type: FETCH_CURRENT_USER_DATA, payload: response.data});
-                state.api.user_access.defaults.baseURL = DOMAIN_API + '/user/' + response.data.access;
-            }
-        } catch (e) {
-            console.log(e);
-        }
-        setLoader(false);
-    };
-
-    useEffect(() => {
-        (async () => {
-            apiChangeAccessToken();
-            await fetchCurrentUserData();
-        })();
-    }, []);
-
+const App: React.FC<AppPropTypes> = ({user, loader}) => {
     const AccessLayouts = () =>
-        state.user.access === 'admin' ? <Admin/> :
-            state.user.access === 'director-franchise' ?
+        user.access === 'admin' ? <Admin/> :
+            user.access === 'director-franchise' ?
                 <DirectorFranchise/> : <Admin/>;
 
     return (
@@ -57,16 +28,31 @@ const App = () => {
                 <div className="loader">
                     <Icon type="loading" style={{fontSize: 24}} spin/>
                 </div>}
+
                 {/* Pages */}
                 <Switch>
-                    <Route exact path="**" render={() => state.user.id ?
+                    <Route exact path="**" render={() => user.id ?
                         <AccessLayouts/> :
-                        <Auth apiChangeAccessToken={apiChangeAccessToken}
-                              fetchCurrentUserData={fetchCurrentUserData}/>}/>
+                        <Auth/>}/>
                 </Switch>
             </div>
         </Router>
     );
 };
 
-export default App;
+const AppState = () => {
+    const {user, app, api} = useSelector((state: any) => (state));
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        (async () => {
+            dispatch(apiChangeAccessToken());
+
+            dispatch(fetchCurrentUserData());
+        })();
+    }, [api.token]);
+
+    return <App user={user} loader={app.loading}/>
+};
+
+export default AppState;

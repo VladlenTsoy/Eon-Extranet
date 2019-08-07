@@ -5,11 +5,11 @@ import LogoEon from "../../assets/images/logo.svg";
 import LogoLimitless from "../../assets/images/limitless.svg";
 // @ts-ignore
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import {LoginForm} from './login/Login';
+import LoginForm from './login/Login';
 
 const {Footer, Content} = Layout;
 
-export const Auth = ({apiChangeAccessToken, fetchCurrentUserData}: any) => {
+export const Auth = () => {
     return (
         <Layout className="layout-auth">
             <Content className="content-auth">
@@ -17,11 +17,8 @@ export const Auth = ({apiChangeAccessToken, fetchCurrentUserData}: any) => {
                     <Col lg={8} md={18} xs={24}>
                         <Router>
                             <Switch>
-                                <Route exact path="/"
-                                       render={() => <LoginForm apiChangeAccessToken={apiChangeAccessToken}
-                                                                fetchCurrentUserData={fetchCurrentUserData}/>}/>
-                                <Route render={() => <LoginForm apiChangeAccessToken={apiChangeAccessToken}
-                                                                fetchCurrentUserData={fetchCurrentUserData}/>}/>
+                                <Route exact path="/" component={LoginForm}/>
+                                <Route component={LoginForm}/>
                             </Switch>
                         </Router>
                     </Col>

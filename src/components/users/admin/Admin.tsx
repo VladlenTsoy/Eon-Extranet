@@ -35,7 +35,7 @@ import {Sidebar} from "./layouts/sidebar/Sidebar";
 import {Navbar} from "./layouts/navbar/Navbar";
 
 
-export const Admin = () => {
+export const Admin:React.FC = () => {
     return <LayoutMainView sidebar={Sidebar()} navbar={Navbar()}>
         <Route exact path="/" component={Home}/>
         // Франшизы
