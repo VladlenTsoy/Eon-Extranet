@@ -4,10 +4,10 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import {useStore} from "../store/useStore";
 import {Icon} from "antd";
 import {Auth} from "./auth/Auth";
-import {Admin} from "./admin/Admin";
-import {FETCH_CURRENT_USER_DATA} from "../store/user/reducer";
-import {FETCH_LANGUAGES} from "../store/language/reducer";
-import DirectorFranchise from "./director-franchise/DirectorFranchise";
+import {Admin} from "./users/admin/Admin";
+import {FETCH_CURRENT_USER_DATA} from "../store/user/_reducer";
+import DirectorFranchise from "./users/director-franchise/DirectorFranchise";
+import {DOMAIN_API} from "../store/api/_reducer";
 
 const App = () => {
     let [loader, setLoader] = useState(true);
@@ -25,30 +25,23 @@ const App = () => {
     let fetchCurrentUserData = async () => {
         try {
             let response = await state.api.user_general.get('');
-            console.log(response.data);
             if (response.data.access === 'student' || response.data.access === 'teacher')
                 alert(1);
-            else
-                dispatch({type: FETCH_CURRENT_USER_DATA, payload: response.data})
+            else {
+                dispatch({type: FETCH_CURRENT_USER_DATA, payload: response.data});
+                state.api.user_access.defaults.baseURL = DOMAIN_API + '/user/' + response.data.access;
+            }
         } catch (e) {
             console.log(e);
         }
         setLoader(false);
     };
 
-    const fetchLanguages = async () => {
-        let response = await state.api.guest('languages');
-        dispatch({type: FETCH_LANGUAGES, payload: response.data.data});
-    };
-
-    let dataFetch = async () => {
-        apiChangeAccessToken();
-        await fetchLanguages();
-        await fetchCurrentUserData();
-    };
-
     useEffect(() => {
-        dataFetch();
+        (async () => {
+            apiChangeAccessToken();
+            await fetchCurrentUserData();
+        })();
     }, []);
 
     const AccessLayouts = () =>
@@ -58,11 +51,13 @@ const App = () => {
 
     return (
         <Router>
-            <div className="default-theme-eon">
+            <div className="App">
+                {/* Loading */}
                 {!loader ||
                 <div className="loader">
                     <Icon type="loading" style={{fontSize: 24}} spin/>
                 </div>}
+                {/* Pages */}
                 <Switch>
                     <Route exact path="**" render={() => state.user.id ?
                         <AccessLayouts/> :

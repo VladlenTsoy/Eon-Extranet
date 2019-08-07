@@ -1,7 +1,7 @@
 import React from 'react';
 import './Navbar.less';
 import {useStore} from "../../../store/useStore";
-import {DELETE_CURRENT_USER_DATA} from "../../../store/user/reducer";
+import {DELETE_CURRENT_USER_DATA} from "../../../store/user/_reducer";
 import {Icon, Menu, Modal} from "antd";
 
 const Item = Menu.Item;

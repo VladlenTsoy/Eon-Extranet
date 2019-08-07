@@ -1,8 +1,8 @@
 import React, {createContext, useReducer, useContext} from "react";
-import {defaultUserState, userAction} from "./user/reducer";
-import {defaultApiState, apiAction} from "./api/reducer";
-import {defaultLanguageState, languagesAction} from "./language/reducer";
-import {defaultFranchiseState, franchiseAction} from "./franchise/reducer";
+import {defaultUserState, userAction} from "./user/_reducer";
+import {defaultApiState, apiAction} from "./api/_reducer";
+import {defaultLanguageState, languagesAction} from "./language/_reducer";
+import {defaultFranchiseState, franchiseAction} from "./franchise/_reducer";
 
 const initialState = {
     user: defaultUserState,
