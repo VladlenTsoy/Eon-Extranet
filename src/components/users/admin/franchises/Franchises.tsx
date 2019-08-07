@@ -1,22 +1,27 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
-import {Button, Card, Icon, Typography, Menu, Dropdown, Tooltip, Modal} from "antd";
+import {Button, Card, Icon, Typography, Menu, Dropdown, Modal} from "antd";
 import {TableComponent} from "../../../layouts/table/Table";
 import defaultImage from '../../../../assets/images/default-thumbnail.jpg';
-import {useStore} from "../../../../store/useStore";
+import {useSelector} from "react-redux";
+import Expanded from "./blocks/expanded/Expanded";
+
+interface FranchisesPropTypes {
+    block: any;
+    unblock: any;
+}
 
 const {Title, Text} = Typography;
 const {confirm} = Modal;
 
-export const Franchises = () => {
-    const [state] = useStore();
+const Franchises: React.FC<FranchisesPropTypes> = ({block, unblock}) => {
     const [loader, setLoader] = useState(false);
 
     const blockFranchise = (franchise: any) => {
         confirm({
             title: 'Вы действительно хотите заблокировать франшизу?',
             async onOk() {
-                await state.api.user_access.post(`franchise/${franchise.id}/block`);
+                await block(franchise);
                 setLoader(true);
             },
         })
@@ -26,7 +31,7 @@ export const Franchises = () => {
         confirm({
             title: 'Вы действительно хотите разблокировать франшизу?',
             async onOk() {
-                await state.api.user_access.post(`franchise/${franchise.id}/unblock`);
+                await unblock(franchise);
                 setLoader(true);
             },
         })
@@ -40,13 +45,10 @@ export const Franchises = () => {
         {record.status ? <Menu.Item onClick={() => blockFranchise(record)}>
             <Icon type="lock"/>
             <span className="link-text">Заблокировать</span>
-        </Menu.Item>: <Menu.Item onClick={() => unblockFranchise(record)}>
+        </Menu.Item> : <Menu.Item onClick={() => unblockFranchise(record)}>
             <Icon type="unlock"/>
             <span className="link-text">Разблокировать</span>
         </Menu.Item>}
-        {/*<Menu.Item>*/}
-        {/*    <Link to={`franchise/${record.id}/more`}><Icon type="info-circle"/> Подробнее</Link>*/}
-        {/*</Menu.Item>*/}
         <Menu.Item>
             <Icon type="edit"/>
             <Link className="link-text" to={`franchises/${record.id}/edit`}> Изменить</Link>
@@ -80,41 +82,18 @@ export const Franchises = () => {
         dataIndex: 'price',
         render: (text: any, record: any) => record.price ? record.price.title : <Text type="secondary">Нет</Text>
     }, {
-        title: 'Центров',
-        dataIndex: 'number_of_centers',
-        render: (centers: any) => <div>
-            <Tooltip title="Активные"><span className="table-count-out open">{centers.active}</span></Tooltip>
-            <Tooltip title="Всего"><span className="table-count-out">{centers.all}</span></Tooltip>
-        </div>,
-    }, {
-        title: 'Учителей',
-        dataIndex: 'number_of_teachers',
-        render: (teachers: any) => <div>
-            <Tooltip title="Были активны в течении месяца"><span
-                className="table-count-out active">{teachers.active}</span></Tooltip>
-            <Tooltip title="Открытые"><span className="table-count-out open">{teachers.open}</span></Tooltip>
-            <Tooltip title="Всего"><span className="table-count-out">{teachers.all}</span></Tooltip>
-        </div>,
-    }, {
-        title: 'Сум',
-        dataIndex: 'number_of_teachers.cost',
-    }, {
-        title: 'Учеников',
-        dataIndex: 'number_of_students',
-        render: (students: any) => <div>
-            <Tooltip title="Были активны в течении месяца"><span
-                className="table-count-out active">{students.active}</span></Tooltip>
-            <Tooltip title="Открытые"><span className="table-count-out open">{students.open}</span></Tooltip>
-            <Tooltip title="Всего"><span className="table-count-out">{students.all}</span></Tooltip>
-        </div>,
-    }, {
-        title: 'Сум',
-        dataIndex: 'number_of_students.cost',
-    }, {
         render: (text: any, record: any) => <Dropdown overlay={menu(text, record)}>
             <Button type="primary" shape="circle" icon="more"/>
         </Dropdown>,
     }];
+
+    const checkClassRow = (record: any) =>
+        record.status ? '' : 'row-hide';
+
+    const expandedRender = (record: any) => {
+        console.log(record);
+        return <Expanded record={record}/>;
+    };
 
     return <div>
         <Card className="_card">
@@ -124,7 +103,24 @@ export const Franchises = () => {
                     <Button icon="plus" htmlType="button" type="primary">Создать</Button>
                 </Link>
             </div>
-            <TableComponent columns={columns} url="franchises" loader={loader} setLoader={setLoader}/>
+            <TableComponent columns={columns} url="franchises" loader={loader} setLoader={setLoader}
+                            expandedRender={expandedRender} checkClass={checkClassRow}/>
         </Card>
     </div>;
 };
+
+const FranchisesState: React.FC = () => {
+    const {api} = useSelector((state: any) => (state));
+
+    const block = async (franchise: any) => {
+        return await api.user_access.post(`franchise/${franchise.id}/block`);
+    };
+
+    const unblock = async (franchise: any) => {
+        return await api.user_access.post(`franchise/${franchise.id}/unblock`);
+    };
+
+    return <Franchises block={block} unblock={unblock}/>
+};
+
+export default FranchisesState;

@@ -8,17 +8,10 @@ const {TextArea} = Input;
 const Option = Select.Option;
 const {Title} = Typography;
 
-export interface Franchise {
-    title: string,
-    description: string,
-    image: string,
-    url_image: string,
-    director_id: number,
-    price: any,
-}
+
 
 interface TableFranchises {
-    data: Franchise
+    data: any
 }
 
 const EditorFranchise = ({form, history, match}: any) => {

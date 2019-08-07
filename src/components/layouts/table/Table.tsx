@@ -1,17 +1,17 @@
 import React, {useEffect, useRef, useState} from "react";
 import {Table, Input, Form} from 'antd';
-import {useStore} from "../../../store/useStore";
+import {useSelector} from "react-redux";
 
-export const TableComponent = ({columns, url, access = 'user_access', loader, setLoader}: any) => {
-    const [state] = useStore();
+export const TableComponent = ({columns, url, access = 'user_access', loader, setLoader, checkClass, expandedRender}: any) => {
+    const {api} = useSelector((state: any) => (state));
     const [data, setData] = useState([]);
     const [pagination, setPagination] = useState({pageIndex: 1, pageSize: 10, total: 0,});
     const [loading, setLoading] = useState(true);
-    const [timer, setTimer] = useState(0);
+    const [timer, setTimer] = useState<any>(0);
     const searchInput = useRef(null);
 
     const fetch = async (params: { results?: any; page?: any; sortField?: any; sortOrder?: any; search?: any; }) => {
-        let response = await state.api[access].get(url, {params: params});
+        let response = await api[access].get(url, {params: params});
         setLoading(false);
         setData(response.data.data);
         setPagination({...pagination, total: response.data.total});
@@ -50,7 +50,6 @@ export const TableComponent = ({columns, url, access = 'user_access', loader, se
         // @ts-ignore
         let search = searchInput.current.state.value;
         setLoading(true);
-        // @ts-ignore
         setTimer(setTimeout(() => handleTableChange(pagination, {}, {}, {}, search), 1000));
     };
 
@@ -59,6 +58,8 @@ export const TableComponent = ({columns, url, access = 'user_access', loader, se
             <Input placeholder="Поиск" onKeyUp={searchOnTable} ref={searchInput}/>
         </Form.Item>
         <Table
+            expandedRowRender={expandedRender}
+            rowClassName={checkClass}
             columns={columns}
             rowKey={(record: any) => record.id}
             dataSource={data}

@@ -22,7 +22,7 @@ import {Applications} from "./applications/Applications";
 import {EditorApplicationForm} from "./applications/editor/Editor";
 import {EditorCityForm} from "./settings/cities/editor/Editor";
 import {EditorCategoryForm} from "./settings/categories/editor/Editor";
-import {Franchises} from "./franchises/Franchises";
+import Franchises from "./franchises/Franchises";
 import {EditorFranchiseForm} from "./franchises/editor/Editor";
 import {EditorCenterForm} from "./centers/editor/Editor";
 import {Prices} from "./settings/prices/Prices";

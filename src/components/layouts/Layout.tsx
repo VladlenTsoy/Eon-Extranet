@@ -4,7 +4,7 @@ import {Layout} from "antd";
 import {SidebarLayout} from "./sidebar/Sidebar";
 import {BrowserRouter as Router, Switch} from "react-router-dom";
 import NavbarLayout from "./navbar/Navbar";
-import {BreadcrumbBlock} from "./breadcrumb/Breadcrumb";
+// import {BreadcrumbBlock} from "./breadcrumb/Breadcrumb";
 
 const {Content} = Layout;
 
@@ -21,7 +21,7 @@ const LayoutMainView = ({children, sidebar, navbar}: any) => {
                     {navbar}
                 </NavbarLayout>
                 <div className="admin-content">
-                    <BreadcrumbBlock/>
+                    {/*<BreadcrumbBlock/>*/}
                     <Switch>
                         {children}
                     </Switch>

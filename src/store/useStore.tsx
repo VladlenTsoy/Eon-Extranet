@@ -2,13 +2,11 @@ import React, {createContext, useReducer, useContext} from "react";
 import {defaultUserState, userAction} from "./user/_reducer";
 import {defaultApiState, apiAction} from "./api/_reducer";
 import {defaultLanguageState, languagesAction} from "./language/_reducer";
-import {defaultFranchiseState, franchiseAction} from "./franchise/_reducer";
 
 const initialState = {
     user: defaultUserState,
     api: defaultApiState,
     language: defaultLanguageState,
-    franchise: defaultFranchiseState,
 };
 
 const StoreContext = createContext(initialState);
@@ -17,7 +15,6 @@ const Actions = {
     ...userAction,
     ...apiAction,
     ...languagesAction,
-    ...franchiseAction,
 };
 
 const reducer = (state: any, action: { type: string, payload: any }) => {

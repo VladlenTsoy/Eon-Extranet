@@ -12,11 +12,9 @@ const breadcrumbNameMap: any = {
 };
 
 export const BreadcrumbBlock = withRouter((props: any) => {
-    const [state, dispatch] = useStore();
     const {location} = props;
     const pathSnippets = location.pathname.split('/').filter((i: any) => i);
     const extraBreadcrumbItems = pathSnippets.map((_: any, index: number) => {
-        console.log(index + 1, pathSnippets.length);
         const url = `/${pathSnippets.slice(0, index + 1).join('/')}`;
         if (index + 1 === pathSnippets.length)
             return <Breadcrumb.Item key={url}>{breadcrumbNameMap[url]}</Breadcrumb.Item>;
