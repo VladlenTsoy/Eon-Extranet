@@ -18,14 +18,20 @@ export const TableComponent = ({columns, url, access = 'user_access', loader, se
     };
 
     useEffect(() => {
-        fetch({})
+        fetch({
+            results: pagination.pageSize,
+            page: pagination.pageIndex,
+        })
     }, []);
 
     useEffect(() => {
 
         if (loader) {
             setLoading(true);
-            fetch({}).then(() => setLoader(false));
+            fetch({
+                results: pagination.pageSize,
+                page: pagination.pageIndex,
+            }).then(() => setLoader(false));
         }
     }, [loader]);
 
