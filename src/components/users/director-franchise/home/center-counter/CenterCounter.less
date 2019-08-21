@@ -1,0 +1,59 @@
+.card-counter-block {
+  .ant-card-body {
+    & > .title {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.75rem;
+
+      i {
+        font-size: 25px;
+        margin-right: 0.5rem;
+      }
+    }
+
+    .content {
+      display: flex;
+      margin-bottom: 0;
+
+
+      .all {
+        .count {
+          color: @text-color-secondary;
+        }
+      }
+
+      .open {
+        .count {
+          color: @success-color;
+        }
+      }
+
+      .active {
+        .count {
+          color: @primary-color;
+        }
+      }
+
+      .test{
+        .count {
+          color: @warning-color;
+        }
+      }
+
+      div {
+        width: 100%;
+        text-align: center;
+
+        .title {
+          display: block;
+        }
+
+        .count {
+          display: block;
+          font-size: 20px;
+          font-weight: bolder;
+        }
+      }
+    }
+  }
+}
